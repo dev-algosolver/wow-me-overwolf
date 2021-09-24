@@ -1,0 +1,120 @@
+.select-box {
+	position: relative;
+	display: block;
+	width: 225px;
+	margin: 0;
+	font-family: "Open Sans", "Helvetica Neue", "Segoe UI", "Calibri", "Arial", sans-serif;
+	font-size: 12px;
+	height: 14px;
+	padding: 7px 10px 7px 15px;
+	color: #e7e7e7;
+	background: url(../img/in-game-window/dropdown/drop-down.png) no-repeat left center;
+	outline: none;
+}
+.test-box {
+	position: absolute;
+	height: 100px;
+}
+.select-box__current {
+	position: relative;
+	box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	outline: none;
+}
+.select-box__current.focussed + .select-box__list {
+	opacity: 1;
+	animation-name: none;
+}
+.select-box__current.focussed + .select-box__list .select-box__option {
+	cursor: pointer;
+}
+.select-box__icon {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	width: 20px;
+}
+.select-box__value {
+	display: flex;
+}
+.select-box__input {
+	display: none;
+}
+.select-box__input:checked + .select-box__input-text {
+	display: block;
+	height: 16px;
+	overflow: hidden;
+}
+.select-box__input-text {
+	display: none;
+	width: 100%;
+	margin: 0;
+	text-transform: capitalize;
+}
+.select-box__list {
+	position: absolute;
+	margin: 5px 0;
+	left: 0;
+	right: 0;
+	padding: 0;
+	list-style: none;
+	opacity: 0;
+	animation-name: HideList;
+	animation-duration: 0.5s;
+	animation-delay: 0.5s;
+	animation-fill-mode: forwards;
+	animation-timing-function: step-start;
+	z-index: 9999;
+	box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+	border: 12px solid transparent;
+	border-image: url(../img/in-game-window/dropdown/drop-down-overlay.png) 13 12 round;
+	background-color: #0f161a;
+	max-height: 150px;
+	overflow: auto;
+}
+.select-box__list::-webkit-scrollbar {
+	background: url(../img/in-game-window/dropdown/scroll-bg.png) #0f161a;
+	background-size: contain;
+	width: 15px;
+}
+.select-box__list::-webkit-scrollbar-track {
+	background-clip: content-box;
+}
+.select-box__list::-webkit-scrollbar-button:increment {
+	background: url(../img/in-game-window/dropdown/scroll-down.png) no-repeat center;
+	background-size: contain;
+}
+.select-box__list::-webkit-scrollbar-button:decrement {
+	background: url(../img/in-game-window/dropdown/scroll-top.png) no-repeat center;
+	background-size: contain;
+}
+.select-box__list::-webkit-scrollbar-thumb {
+	background: url(../img/in-game-window/dropdown/scroll-thumb.png);
+	border-radius: 2px;
+	border-left: 3px solid transparent;
+	border-right: 4px solid transparent;
+	border-image: url(../img/in-game-window/dropdown/scroll-bg.png) 4 4;
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid transparent;
+}
+label.select-box__option {
+	display: block;
+	padding: 3px 15px;
+	background-color: #0f161a;
+	color: #e7e7e7;
+	text-transform: capitalize;
+}
+label.select-box__option:hover, label.select-box__option:focus {
+	color: #ffd100;
+	background-color: #0f161a;
+}
+
+@keyframes HideList {
+	from {
+		transform: scaleY(1);
+	}
+	to {
+		transform: scaleY(0);
+	}
+}

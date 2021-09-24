@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../../css/general.css" />
+    <link rel="stylesheet" href="../../css/header.css" />
+    <link rel="stylesheet" href="../../css/desktop.css" />
+    <link rel="stylesheet" href="../../css/modal.css" />
+    <link rel="stylesheet" href="../../css/dropdown.css" />
+    <link rel="stylesheet" href="../../css/ranger.css" />
+    <link rel="stylesheet" href="../../css/talent-table.css" />
+    <link rel="stylesheet" href="../../css/character-dropdown.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>WoW.me - Desktop page</title>
+  </head>
+
+  <body class="desktop">
+    <!-- -------------------------------- Header ------------------------------- -->
+
+    <header id="header" class="app-header">
+      <div class="window-controls-group">
+        <a id="feedbackButton" href="mailto:info@wowme.gg">
+          <img src="/img/desktop-window/feedback.svg" alt="" />
+          <label>Write a feedback</label>
+        </a>
+        <div class="user-info" id="user-info">
+          <img src="/img/desktop-window/avatar.png" alt="" />
+          <div>
+            <div id="battle-tag">ShinyHero#2174189</div>
+            <div class="online-status">
+              Online <img src="/img/desktop-window/online-check.svg" alt="" />
+            </div>
+          </div>
+        </div>
+        <button class="icon window-control" id="discordButton">
+          <img src="/img/desktop-window/discord.svg" alt="" />
+        </button>
+        <!-- <button class="icon window-control" id="helpButton">?</button> -->
+        <button class="icon window-control" id="minimizeButton">
+          <svg>
+            <use xlink:href="/img/header_icons.svg#window-control_minimize" />
+          </svg>
+        </button>
+        <button
+          class="icon window-control window-control-close"
+          id="closeButton"
+        >
+          <svg>
+            <use xlink:href="/img/header_icons.svg#window-control_close" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- --------------------------------- Main -------------------------------- -->
+    <main id="main" class="home">
+      <div class="desktop-menu">
+        <img src="/img/desktop-window/logo.png" alt="WoW.me" />
+        <ul>
+          <li class="menu-item active" id="btn-main" page-type="home">
+            <div class="menu-item-normal"><i class="icon icon-home"></i></div>
+            <div class="menu-item-hover">
+              <i class="icon icon-home"></i>Main
+            </div>
+          </li>
+          <li
+            class="menu-item"
+            id="btn-talent-picker"
+            page-type="talent-picker"
+          >
+            <div class="menu-item-normal">
+              <i class="icon icon-talent-picker"></i>
+            </div>
+            <div class="menu-item-hover">
+              <i class="icon icon-talent-picker"></i>Talent Picker
+            </div>
+          </li>
+          <li
+            class="menu-item"
+            id="btn-personal-journal"
+            page-type="personal-journal"
+          >
+            <div class="menu-item-normal">
+              <i class="icon icon-personal-journal"></i>
+            </div>
+            <div class="menu-item-hover">
+              <i class="icon icon-personal-journal"></i>Personal Journal
+            </div>
+          </li>
+          <li
+            class="menu-item in-progress"
+            id="btn-gear-optimizer"
+            page-type="gear-optimizer"
+          >
+            <div class="menu-item-normal">
+              <i class="icon icon-gear-optimizer"></i>
+            </div>
+            <div class="menu-item-hover">
+              <i class="icon icon-gear-optimizer"></i>Gear Optimizer<br />(Coming
+              soon...)
+            </div>
+          </li>
+          <li class="menu-item" id="btn-settings" page-type="settings">
+            <div class="menu-item-normal">
+              <i class="icon icon-settings"></i>
+            </div>
+            <div class="menu-item-hover">
+              <i class="icon icon-settings"></i>Settings
+            </div>
+          </li>
+          <li class="menu-item" id="btn-logout" page-type="logout">
+            <div class="menu-item-normal"><i class="icon icon-logout"></i></div>
+            <div class="menu-item-hover">
+              <i class="icon icon-logout"></i>Logout
+            </div>
+          </li>
+          <!-- </a> -->
+        </ul>
+      </div>
+      <div class="page-content">
+        <div class="panel page-left">
+          <div class="home-content">
+            <h1>Welcome!</h1>
+            <p>
+              Hello WoWers! We are the WoW.Me team, a group of dedicated gamers
+              with a goal of improving your day-to-day WoW gameplay and
+              experience.
+            </p>
+            <p>
+              As the game is getting more and more complex, the choices we make
+              become more important. Talents, condults, legenderies, each play a
+              role in how we perform and getting them right is key to success!
+            </p>
+            <p>
+              In addition to the various systems that affect your power, the
+              game has more and more things to keep track of, be it dailies,
+              achievements, raid or dungeon runs and the list goes on and on.
+            </p>
+            <p>
+              Over the coming period we will be working on many other exciting
+              features using statistical analysis of leading players to make
+              decisions for you!
+            </p>
+            <p>We are doing our best to continue to WoW.You!!</p>
+            <p>
+              In our roadmap we plan to help you track your activities, quests,
+              and goals, help you decide which gear to focus on, how to
+              collaborate with other players and many more features!
+            </p>
+            <p>
+              We need your help! Your feedback, ideas, and support are super
+              helpful for us to continue to make WoW.Me better. Of course, if
+              you are willing to become our patron to help us dedicate more time
+              and effort, this will be amazing.
+            </p>
+            <p>
+              Our app offers different recommendations for your build, tailored
+              for your desired content.
+            </p>
+            <h3>UPDATE: V1.0</h3>
+            <ul>
+              <li>
+                We are live! Our Talent Picker feature is up and running and
+                ready to be used!
+              </li>
+              <li>
+                No more annoying alt-tabbing to find the right talents for each
+                Dungeon or Raid boss!
+              </li>
+              <li>Ideal for building your Alts or if you’re a rising star.</li>
+              <li>
+                By analyzing the leading players in various brackets this
+                feature helps you make the correct decision when it comes to
+                picking the best talents for the situation you’re in.
+              </li>
+              <li>
+                We allow you to see what best players do split by dungeons/raid,
+                levels and to your specific spec.
+              </li>
+            </ul>
+          </div>
+          <div class="talent-picker-content">
+            <!-- <h1>Talent Picker</h1> -->
+            <div class="talent-picker-container">
+              <div class="talent-picker image-border">
+                <div class="condition-panel image-border">
+                  <div id="raid_dungeon-switch__container" data="dungeon">
+                    <a href="#" id="switch_dungeon">Dungeon</a>
+                    <div id="raid_dungeon-switch"></div>
+                    <a href="#" id="switch_raid">Raid</a>
+                  </div>
+                  <div id="raid_dungeon-select-box__container">
+                    <label>Raid / Dungeon</label>
+                  </div>
+                  <div id="class-select-box__container">
+                    <label>Class</label>
+                  </div>
+                  <div>
+                    <div id="key_level-select-box__container">
+                      <label>Raid Level</label>
+                    </div>
+                    <div id="ranger__container">
+                      <label>Keystone Level</label>
+                      <div class="range-slider">
+                        <input
+                          type="range"
+                          value="1"
+                          step="1"
+                          min="1"
+                          max="45"
+                          id="key-stone-level-min"
+                        />
+                        <input
+                          type="range"
+                          value="45"
+                          step="1"
+                          min="1"
+                          max="45"
+                          id="key-stone-level-max"
+                        />
+                        <span id="key-stone-level-text"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="specs-select-box__container">
+                    <label>Specs</label>
+                  </div>
+                  <div>
+                    <div id="raid_boss-select-box__container">
+                      <label>Raid Boss</label>
+                    </div>
+                  </div>
+                  <div id="checkbox__container">
+                    <input type="checkbox" id="advanced_filters" />
+                    <label for="advanced_filters">Advanced Filters</label>
+                    <input type="checkbox" id="tree_mode" />
+                    <label for="tree_mode">Full Builds</label>
+                  </div>
+                </div>
+                <div class="talent-panel image-border">
+                  <div id="talent-anim-panel">
+                    <div class="talent-panel-header">
+                      <label id="talent-panel-title"
+                        >Most Popular Talent Trees</label
+                      >
+                      <div id="tree_mode_action_panel">
+                        <label id="pick_rate">Pick Rate : 90%</label>
+                        <button id="btn_prev">
+                          <img
+                            src="/img/in-game-window/button/prev.png"
+                            alt="Prev"
+                          />
+                        </button>
+                        <button id="btn_next">
+                          <img
+                            src="/img/in-game-window/button/next.png"
+                            alt="Next"
+                          />
+                        </button>
+                        <label id="tree_index">1 / 4</label>
+                      </div>
+                    </div>
+                    <div id="talent-table-container"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="personal-journal-content">
+            <h1>Personal Journal</h1>
+            <div class="personal-journal-container">
+              <div class="personal-journal">
+                <!-- JOurneal add -->
+                <div class="journal-tabs-wrapper">
+                  <div id="journal-tabs"></div>
+                  <div id="journal-tabs-button">
+                    <button class="tab-action-button" id="myBtn">
+                      <span
+                        class="material-icons"
+                        style="font-size: 17px; margin-right: 5px"
+                      >
+                        add_circle
+                      </span>
+                      Add News
+                    </button>
+                  </div>
+                </div>
+                <div id="myModal" class="modal">
+                  <div class="modal-content">
+                    <span class="close"></span>
+                    <p class="modalTitle2">Title</p>
+                    <input type="text" id="myInput" />
+                    <label for="accept" class="checkBox">
+                      <input
+                        type="checkbox"
+                        id="accept"
+                        name="accept"
+                        value="checked"
+                      />
+                      save as template
+                    </label>
+                    <button id="saveButton" type="button">save</button>
+                  </div>
+                </div>
+
+                <!-- journel edit modal -->
+
+                <button
+                  style="visibility: hidden; height: 0px; width: 0px"
+                  class="tab-action-button"
+                  id="myBtnEdit"
+                ></button>
+                <div id="myModal2" class="modal">
+                  <div class="modal-content">
+                    <span class="myModal2Close"></span>
+                    <p class="modalTitle2">Title</p>
+                    <input type="text" id="myInput2" />
+                    <label for="accept" class="checkBox">
+                      <input
+                        type="checkbox"
+                        id="accept"
+                        name="accept"
+                        value="checked"
+                      />
+                      save as template
+                    </label>
+                    <button id="myModal2Save" type="button">save</button>
+                  </div>
+                </div>
+
+                <div class="journal-content">
+                  <div id="journal-item-container">
+                    <!-- <div class="journal-item">
+                      <button class="accordion">Mythic +</button>
+                      <p>ToP +10 2 Chest--Todo:</p>
+                    </div> -->
+                  </div>
+
+                  <div id="addContentModal" class="modal">
+                    <div class="modal-content-add">
+                      <span class="ContentModalClose"></span>
+                      <div class="container" id="richTextEditor">
+                        <p class="journalModalHeader">Create new journal</p>
+                        <p class="modalTitle">Title</p>
+                        <input type="text" id="contentTitle" />
+                        <p class="modalTitle">Description</p>
+                        <div class="wrapper">
+                          <div class="richEditor">
+                            <div class="toolbar">
+                              <button
+                                class="material-icons"
+                                data-element="bold"
+                                title="bold"
+                              >
+                                format_bold
+                              </button>
+                              <button
+                                class="material-icons"
+                                data-element="underline"
+                                title="Underline"
+                              >
+                                format_underline
+                              </button>
+                              <button
+                                class="material-icons"
+                                data-element="strikeThrough"
+                                title="StrikeThrough"
+                              >
+                                format_strikethrough
+                              </button>
+
+                              <button
+                                class="material-icons"
+                                data-element="add"
+                                title="Increase Font Size"
+                              >
+                                add
+                              </button>
+                              <button
+                                class="material-icons"
+                                data-element="remove"
+                                title="Decrease Font Size"
+                              >
+                                remove
+                              </button>
+                              <button
+                                class="material-icons"
+                                data-element="checkbox"
+                                title="Checkbox"
+                              >
+                                add_box
+                              </button>
+                              <button
+                                class="material-icons"
+                                data-element="foreColor"
+                                title="Text Color"
+                              >
+                                format_color_text
+                                <input
+                                  name="Color Picker"
+                                  type="color"
+                                  id="colorPicker"
+                                  onchange="updateColor(this)"
+                                  style="
+                                    visibility: hidden;
+                                    width: 0px;
+                                    height: 0px;
+                                  "
+                                />
+                              </button>
+                            </div>
+                            <div
+                              class="editor"
+                              contenteditable="true"
+                              data-gramm_editor="false"
+                            ></div>
+                          </div>
+                        </div>
+                        <button
+                          type="submit"
+                          class="submitButton"
+                          id="contentsaveButton"
+                        >
+                          save
+                        </button>
+                        <button type="submit" class="cancelButton">
+                          cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button id="addContentButton" type="button">
+                    Add new content
+                  </button>
+                  <!-- edit modal -->
+                  <div id="editContentModal" class="modal">
+                    <div class="modal-content-add">
+                      <span class="editContentModalClose">&times;</span>
+                      <div class="container" id="richTextEditor2">
+                        <p class="journalModalHeader">Update journal</p>
+                        <p class="modalTitle">Title</p>
+                        <input type="text" id="editContentTitle" />
+                        <p class="modalTitle">Description</p>
+                        <div class="wrapper">
+                          <div class="richEditor">
+                            <div class="toolbar">
+                              <button
+                                class="material-icons"
+                                data-element="bold"
+                                title="bold"
+                              >
+                                format_bold
+                              </button>
+                              <button
+                                class="material-icons"
+                                data-element="underline"
+                                title="Underline"
+                              >
+                                format_underline
+                              </button>
+                              <button
+                                class="material-icons"
+                                data-element="strikeThrough"
+                                title="StrikeThrough"
+                              >
+                                format_strikethrough
+                              </button>
+
+                              <button
+                                class="material-icons"
+                                data-element="add"
+                                title="Increase Font Size"
+                              >
+                                add
+                              </button>
+                              <button
+                                class="material-icons"
+                                data-element="remove"
+                                title="Decrease Font Size"
+                              >
+                                remove
+                              </button>
+                              <button
+                                class="material-icons"
+                                data-element="checkbox"
+                                title="Checkbox"
+                              >
+                                add_box
+                              </button>
+                              <button
+                                class="material-icons"
+                                data-element="foreColor"
+                                title="Text Color"
+                              >
+                                format_color_text
+                                <input
+                                  name="Color Picker"
+                                  type="color"
+                                  id="colorPicker"
+                                  onchange="updateColor(this)"
+                                  style="visibility: hidden; width: 0px"
+                                />
+                              </button>
+                            </div>
+                            <div
+                              class="editEditor"
+                              contenteditable="true"
+                              data-gramm_editor="false"
+                            ></div>
+                          </div>
+                        </div>
+                        <button
+                          type="submit"
+                          class="submitButton2"
+                          id="contentsaveButton2"
+                        >
+                          save
+                        </button>
+                        <button type="submit" class="cancelButton2">
+                          cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    id="editContentButton"
+                    type="button"
+                    style="visibility: hidden; height: 0px; width: 0px"
+                  >
+                    edit content
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="settings-content">
+            <h1>Settings</h1>
+            <div class="settings-panel">
+              <h2>Launcher:</h2>
+              <div class="settings-item">
+                <p>Auto launch when game starts</p>
+                <div class="switch" id="auto-launch-when-game-starts"></div>
+              </div>
+              <div class="settings-item">
+                <p>Show app when game ends:</p>
+                <div class="switch" id="show-app-when-game-ends"></div>
+              </div>
+            </div>
+            <div class="settings-panel">
+              <h2>General Settings:</h2>
+              <div class="settings-item">
+                <p>Show / Hide App</p>
+                <button id="hotkey-editor"></button>
+                <button id="hotkey-close">
+                  <svg>
+                    <use
+                      xlink:href="/img/header_icons.svg#window-control_close"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="settings-panel">
+              <h2>Social Settings:</h2>
+              <div class="settings-item">
+                <p>Copy this link and share with friends!</p>
+              </div>
+              <div class="settings-item social-url">
+                <input
+                  type="text"
+                  value="https://www.overwolf.com/app/wow.me"
+                  readonly
+                  id="input-social-url"
+                />
+                <button id="btn-copy-social-url">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right">
+          <div class="panel sub-panel" id="sub-panel">
+            <div id="loading-overlay">
+              <img src="/img/desktop-window/loading.gif" alt="" />
+            </div>
+            <div class="home-content">
+              <div class="login-panel">
+                <img src="/img/desktop-window/blizzard-logo.png" alt="" />
+                <button id="btn-login">Login with Battle.net</button>
+              </div>
+              <div class="character-panel">
+                <div id="character-select-box__container"></div>
+                <div class="character-info">
+                  <div id="total_number_deaths">Total Number Deaths: 14</div>
+                  <div id="total_gold_gained">Total Gold Gained: 4587028</div>
+                  <div id="total_gold_lost">Total Gold Lost: 858691</div>
+                  <div id="total_item_value_gained">
+                    Total Item Value Gained: 1198739
+                  </div>
+                  <div id="level_number_deaths">Level Number Deaths: 7</div>
+                  <div id="level_gold_gained">Level Gold Gained: 2867244</div>
+                  <div id="level_gold_lost">Level Gold Lost: 646942</div>
+                  <div id="level_item_value_gained">
+                    Level Item Value Gained: 866885
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="
+                planned-additional-features
+                talent-picker-content
+                settings-content
+              "
+            >
+              <h3>Planned additional features</h3>
+              <ul>
+                <li>Weekly data refresh.</li>
+                <li>
+                  Support for specific spec builds (1 handed vs 2 handed
+                  weapons).
+                </li>
+                <li>Weekly meta insights.</li>
+                <li>Call outs with selection logic.</li>
+              </ul>
+            </div>
+          </div>
+          <!-- <div class="panel remove-ads-panel">
+          <label>Remove ads and get extra features</label>
+          <button id="btn-premium">GO PREMIUM</button>
+        </div> -->
+          <div class="panel ads-panel">
+            <div id="ad-div"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function toggleActiveTab() {
+        var element = document.getElementsByClassName("tab-link");
+        console.log(element.length);
+        element.classList.toggle("active-tab");
+      }
+    </script>
+
+    <script
+      src="https://content.overwolf.com/libs/ads/latest/owads.min.js"
+      async
+      onload="onOwAdReady()"
+    ></script>
+    <script>
+      let _owAd = null;
+
+      setTimeout(() => {
+        if (!_owAd) {
+          console.error("Couldn't load owads.min.js!");
+        }
+      }, 20000);
+
+      function onOwAdReady() {
+        if (!OwAd) {
+          setTimeout(() => {
+            if (!_owAd) {
+              onOwAdReady();
+            }
+          }, 2000);
+
+          return;
+        }
+
+        _owAd = new OwAd(document.getElementById("ad-div"), {
+          size: { width: 400, height: 300 },
+        });
+
+        function onWindowStateChanged(state) {
+          if (state && state.window_name === "desktop") {
+            if (state.window_state === "minimized") {
+              _owAd.removeAd();
+            } else if (
+              state.window_state === "normal" &&
+              state.window_previous_state === "minimized"
+            ) {
+              _owAd.refreshAd();
+            }
+          }
+        }
+
+        overwolf.windows.onStateChanged.removeListener(onWindowStateChanged);
+        overwolf.windows.onStateChanged.addListener(onWindowStateChanged);
+      }
+      onOwAdReady();
+    </script>
+    <script>
+      // Standard Google Universal Analytics code
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+        // Note: https protocol here
+      })(
+        window,
+        document,
+        "script",
+        "https://www.google-analytics.com/analytics.js",
+        "ga"
+      );
+
+      ga("create", "UA-144253676-3", "auto");
+
+      // Removes failing protocol check. @see: http://stackoverflow.com/a/22152353/1958200
+      ga("set", "checkProtocolTask", function () {});
+      ga("require", "displayfeatures");
+      ga("send", "pageview", "/desktop.html");
+    </script>
+
+    <script>
+      var modal = document.getElementById("myModal");
+
+      var btn = document.getElementById("myBtn");
+
+      var span = document.getElementsByClassName("close")[0];
+
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+
+    <script>
+      var mymodalEdit = document.getElementById("myModal2");
+
+      var myBtnEdit = document.getElementById("myBtnEdit");
+
+      var myModal2Close = document.getElementsByClassName("myModal2Close")[0];
+
+      myBtnEdit.onclick = function () {
+        mymodalEdit.style.display = "block";
+      };
+
+      myModal2Close.onclick = function () {
+        mymodalEdit.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == mymodalEdit) {
+          mymodalEdit.style.display = "none";
+        }
+      };
+    </script>
+
+    <script>
+      var modal2 = document.getElementById("addContentModal");
+
+      var btn2 = document.getElementById("addContentButton");
+
+      var span2 = document.getElementsByClassName("ContentModalClose")[0];
+
+      btn2.onclick = function () {
+        modal2.style.display = "block";
+      };
+
+      span2.onclick = function () {
+        modal2.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal2) {
+          modal2.style.display = "none";
+        }
+      };
+    </script>
+
+    <script>
+      var modal3 = document.getElementById("editContentModal");
+
+      var btn3 = document.getElementById("editContentButton");
+
+      var span3 = document.getElementsByClassName("editContentModalClose")[0];
+
+      btn3.onclick = function () {
+        modal3.style.display = "block";
+      };
+
+      span3.onclick = function () {
+        modal3.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal3) {
+          modal3.style.display = "none";
+        }
+      };
+    </script>
+
+    <script>
+      const formateIcons = document.querySelectorAll(
+        ".toolbar .material-icons"
+      );
+
+      formateIcons.forEach((icons) => {
+        icons.addEventListener("click", () => {
+          const selected = icons.dataset["element"];
+          if (selected === "createLink" || selected === "insertImage") {
+            const url = prompt("Url");
+            url && document.execCommand(selected, false, url);
+          } else if (selected === "checkbox") {
+            let now = Date.now();
+            let checkbox = `<input type="checkbox" id='${now.toString()}'  onClick='checkbox(this)'>&nbsp; `;
+
+            document.execCommand("insertHTML", false, checkbox);
+          } else if (selected === "add" || selected === "remove") {
+            let size = document.getSelection().focusNode.parentNode.size;
+            let fontSize =
+              selected === "add"
+                ? size
+                  ? parseInt(size) + 1
+                  : 4
+                : size
+                ? parseInt(size) - 1
+                : 2;
+            let res = document.execCommand(
+              "fontSize",
+              false,
+              parseInt(fontSize)
+            );
+            console.log(fontSize);
+          } else if (selected === "foreColor") {
+            document.querySelector("#colorPicker").click();
+          } else {
+            document.execCommand(selected, false, null);
+          }
+        });
+      });
+
+      const sumbmitButton = document.querySelector(".submitButton");
+      const cancelButton = document.querySelector(".cancelButton");
+
+      const sumbmitButton2 = document.querySelector(".submitButton2");
+      const cancelButton2 = document.querySelector(".cancelButton2");
+
+      sumbmitButton.addEventListener("click", () => {
+        const htmlFile = document.querySelector(".editor").innerHTML;
+        console.log(htmlFile);
+      });
+
+      cancelButton.addEventListener("click", () => {
+        document.querySelector(".editor").innerHTML = "";
+        console.log(htmlFile);
+      });
+
+      sumbmitButton2.addEventListener("click", () => {
+        const htmlFile = document.querySelector(".editEditor").innerHTML;
+        console.log(htmlFile);
+      });
+
+      cancelButton2.addEventListener("click", () => {
+        document.querySelector(".editEditor").innerHTML = "";
+        console.log(htmlFile);
+      });
+
+      function checkbox(e) {
+        let checkid = document.getElementById(e.id);
+        console.log(e.checked);
+        if (e.checked) {
+          checkid.setAttribute("checked", "checked");
+        } else {
+          checkid.removeAttribute("checked");
+        }
+        console.log(checkid);
+      }
+
+      function updateColor(e) {
+        let pickedColor = document.querySelector("#colorPicker").value;
+        console.log(pickedColor);
+        document.execCommand("foreColor", false, pickedColor);
+      }
+    </script>
+
+    <script>
+      let richtext = document.getElementById("addContentButton");
+      let richtext2 = document.getElementById("editContentButton");
+
+      let richtextContainer = document.getElementById("richTextEditor");
+      let richtextContainer2 = document.getElementById("richTextEditor2");
+
+      richtext.addEventListener("click", function () {
+        if (richtextContainer.classList.contains("active")) {
+          richtextContainer.classList.remove("active");
+        } else {
+          richtextContainer.classList.add("active");
+        }
+      });
+
+      richtext2.addEventListener("click", function () {
+        if (richtextContainer2.classList.contains("active")) {
+          richtextContainer2.classList.remove("active");
+        } else {
+          richtextContainer2.classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>
