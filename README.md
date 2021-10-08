@@ -1,3 +1,3 @@
 # wow-me-overwolf
 
-Go to bracnch Tanjim for code review
+Go to branch Tanjim for code review
