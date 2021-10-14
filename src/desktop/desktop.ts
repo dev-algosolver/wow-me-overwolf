@@ -417,6 +417,13 @@ class Desktop extends AppWindow {
           journalBtn.appendChild(editSpan)
 
           journalBtn.classList.add("accordion");
+            if (journalDesc.classList.contains("active")) {
+              journalDesc.classList.remove("active");
+              journalDesc.innerHTML = "";
+            } else {
+              journalDesc.innerHTML = element.description;
+              journalDesc.classList.add("active");
+            }
 
           journalBtn.addEventListener("click", function () {
             if (journalDesc.classList.contains("active")) {
