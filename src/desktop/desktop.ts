@@ -350,12 +350,12 @@ class Desktop extends AppWindow {
       editJournel.innerHTML = "edit"
       btn.appendChild(editJournel)
 
-      editJournel.addEventListener("click" ,(e)=>{
+      editJournel.addEventListener("click", (e) => {
         const target = e.target as Element;
         e.stopPropagation();
         let elems = document.querySelector(".edit-journel");
-        if(elems !==null){
-        elems.classList.remove("edit-journel");
+        if (elems !== null) {
+          elems.classList.remove("edit-journel");
         }
         target.parentElement.classList.add("edit-journel");
         const editModalOpenButton = document.getElementById("myBtnEdit");
@@ -368,13 +368,13 @@ class Desktop extends AppWindow {
       })
 
 
-      deleteSpan.addEventListener("click" ,(e)=>{
+      deleteSpan.addEventListener("click", (e) => {
         e.stopPropagation();
         deleteJournal(response.data[i]._id);
         let item = document.querySelector(`[data-id="${response.data[i]._id}"]`);
         item.remove();
         let content = response.data;
-        content = content.filter((con) => con._id != response.data[i]._id );
+        content = content.filter((con) => con._id != response.data[i]._id);
         response.data = content;
         const journalContainer = document.getElementById(
           "journal-item-container"
@@ -386,11 +386,13 @@ class Desktop extends AppWindow {
         const target = e.target as Element;
         const id = this.getAttribute("data-id");
         let elems = document.querySelector(".active-tab");
-        if(elems !==null){
-        elems.classList.remove("active-tab");
+        if (elems !== null) {
+          elems.classList.remove("active-tab");
         }
         target.classList.add("active-tab");
+        console.log(response);
         const selectedJournal = response.data[i];
+        console.log(selectedJournal);
         const journalContainer = document.getElementById(
           "journal-item-container"
         );
@@ -417,13 +419,13 @@ class Desktop extends AppWindow {
           journalBtn.appendChild(editSpan)
 
           journalBtn.classList.add("accordion");
-            if (journalDesc.classList.contains("active")) {
-              journalDesc.classList.remove("active");
-              journalDesc.innerHTML = "";
-            } else {
-              journalDesc.innerHTML = element.description;
-              journalDesc.classList.add("active");
-            }
+          if (journalDesc.classList.contains("active")) {
+            journalDesc.classList.remove("active");
+            journalDesc.innerHTML = "";
+          } else {
+            journalDesc.innerHTML = element.description;
+            journalDesc.classList.add("active");
+          }
 
           journalBtn.addEventListener("click", function () {
             if (journalDesc.classList.contains("active")) {
@@ -435,28 +437,28 @@ class Desktop extends AppWindow {
             }
           });
 
-          editSpan.addEventListener("click" ,(e)=>{
+          editSpan.addEventListener("click", (e) => {
             const target = e.target as Element;
             // e.stopPropagation();
             let elems = document.querySelector(".active-content");
-            if(elems !==null){
-            elems.classList.remove("active-content");
+            if (elems !== null) {
+              elems.classList.remove("active-content");
             }
             target.parentElement.parentElement.classList.add("active-content");
             const modalOpenButton = document.getElementById("editContentButton");
             modalOpenButton.click();
-            (document.getElementById("editContentTitle") as HTMLInputElement).value= element.title;
+            (document.getElementById("editContentTitle") as HTMLInputElement).value = element.title;
             document.querySelector(".editEditor").innerHTML = element.description;
           })
-          
-          textSpan.addEventListener("click" ,()=>{
+
+          textSpan.addEventListener("click", () => {
             let elems = document.querySelector(".active-tab");
             let dataID = elems.getAttribute('data-id')
-            deleteJournalContent(dataID , element._id);
+            deleteJournalContent(dataID, element._id);
             let item = document.querySelector(`[data-id="${element._id}"]`);
             item.remove();
             let content = response.data[i].data;
-            content = content.filter((con) => con._id != element._id );
+            content = content.filter((con) => con._id != element._id);
             response.data[i].data = content;
           })
           journalItem.appendChild(journalBtn);
@@ -468,12 +470,12 @@ class Desktop extends AppWindow {
       });
     }
   }
-  
+
 
   private async storeUserJournals() {
     const saveButton = document.getElementById("saveButton")
-    
-    saveButton.addEventListener("click" , async (e)=>{
+
+    saveButton.addEventListener("click", async (e) => {
       e.preventDefault();
       let inputVal = (document.getElementById("myInput") as HTMLInputElement).value;
       const cb = document.getElementById("accept") as HTMLInputElement;
@@ -485,12 +487,12 @@ class Desktop extends AppWindow {
       }
       console.log(data)
       const response = await storeJournals(data);
-      if(response.success){
+      if (response.success) {
         const journalList = document.getElementById("journal-tabs");
-        journalList.innerHTML= '';
-        await this.getUserJournals();  
+        journalList.innerHTML = '';
+        await this.getUserJournals();
         let bttnn2 = document.querySelector(`[data-id="${response.data._id}"]`);
-        if((bttnn2 as HTMLElement)){
+        if ((bttnn2 as HTMLElement)) {
           (bttnn2 as HTMLElement).click()
         }
         (document.getElementById("myInput") as HTMLInputElement).value = "";
@@ -502,8 +504,8 @@ class Desktop extends AppWindow {
 
   private async updateUserJournals() {
     const saveButtonEdit = document.getElementById("myModal2Save")
-    
-    saveButtonEdit.addEventListener("click" , async (e)=>{
+
+    saveButtonEdit.addEventListener("click", async (e) => {
       e.preventDefault();
       let inputVal = (document.getElementById("myInput2") as HTMLInputElement).value;
       const cb = document.getElementById("accept") as HTMLInputElement;
@@ -516,12 +518,12 @@ class Desktop extends AppWindow {
         template: check,
       }
       const response = await updateJournals(contentID, data);
-      if(response.success){
+      if (response.success) {
         const journalList = document.getElementById("journal-tabs");
-        journalList.innerHTML= '';
-        await this.getUserJournals();  
+        journalList.innerHTML = '';
+        await this.getUserJournals();
         let bttnn2 = document.querySelector(`[data-id="${response.data._id}"]`);
-        if((bttnn2 as HTMLElement)){
+        if ((bttnn2 as HTMLElement)) {
           (bttnn2 as HTMLElement).click()
         }
         (document.getElementById("myInput2") as HTMLInputElement).value = "";
@@ -533,8 +535,8 @@ class Desktop extends AppWindow {
 
   private async storeUserJournalContent() {
     const saveContentButton = document.getElementById("contentsaveButton")
-    
-    saveContentButton.addEventListener("click" , async (e)=>{
+
+    saveContentButton.addEventListener("click", async (e) => {
       e.preventDefault();
       let elems = document.querySelector(".active-tab");
       const id = elems.getAttribute("data-id")
@@ -542,19 +544,19 @@ class Desktop extends AppWindow {
       const htmlFile = document.querySelector(".editor").innerHTML;
       let data = {
         title: contentTitle,
-        description : htmlFile
+        description: htmlFile
       }
-      const response = await storeJournalContent(id,data);
-      if(response.success){
-      const journalList = document.getElementById("journal-tabs");
-      journalList.innerHTML= '';
-      await this.getUserJournals()    
-      let bttnn = document.querySelector(`[data-id="${id}"]`);
-      if((bttnn as HTMLElement)){
-        (bttnn as HTMLElement).click()
-      }
-      (document.getElementById("contentTitle") as HTMLInputElement).value= ""
-       document.querySelector(".editor").innerHTML =""
+      const response = await storeJournalContent(id, data);
+      if (response.success) {
+        const journalList = document.getElementById("journal-tabs");
+        journalList.innerHTML = '';
+        await this.getUserJournals()
+        let bttnn = document.querySelector(`[data-id="${id}"]`);
+        if ((bttnn as HTMLElement)) {
+          (bttnn as HTMLElement).click()
+        }
+        (document.getElementById("contentTitle") as HTMLInputElement).value = ""
+        document.querySelector(".editor").innerHTML = ""
       }
       (document.querySelector(".ContentModalClose") as HTMLElement).click()
     })
@@ -564,8 +566,8 @@ class Desktop extends AppWindow {
 
   private async updateUserJournalContent() {
     const saveContentButton2 = document.getElementById("contentsaveButton2")
-    
-    saveContentButton2.addEventListener("click" , async (e)=>{
+
+    saveContentButton2.addEventListener("click", async (e) => {
       e.preventDefault();
       let elems = document.querySelector(".active-tab");
       const id = elems.getAttribute("data-id")
@@ -575,19 +577,19 @@ class Desktop extends AppWindow {
       const htmlFile = document.querySelector(".editEditor").innerHTML;
       let data = {
         title: contentTitle,
-        description : htmlFile
+        description: htmlFile
       }
-      const response = await editJournalContent(id,contentID, data);
-      if(response.success){
-      const journalList = document.getElementById("journal-tabs");
-      journalList.innerHTML= '';
-      await this.getUserJournals()    
-      let bttnn = document.querySelector(`[data-id="${id}"]`);
-      if((bttnn as HTMLElement)){
-        (bttnn as HTMLElement).click()
-      }
-      (document.getElementById("editContentTitle") as HTMLInputElement).value= ""
-       document.querySelector(".editEditor").innerHTML =""
+      const response = await editJournalContent(id, contentID, data);
+      if (response.success) {
+        const journalList = document.getElementById("journal-tabs");
+        journalList.innerHTML = '';
+        await this.getUserJournals()
+        let bttnn = document.querySelector(`[data-id="${id}"]`);
+        if ((bttnn as HTMLElement)) {
+          (bttnn as HTMLElement).click()
+        }
+        (document.getElementById("editContentTitle") as HTMLInputElement).value = ""
+        document.querySelector(".editEditor").innerHTML = ""
       }
       (document.querySelector(".editContentModalClose") as HTMLElement).click()
     })

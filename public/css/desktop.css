@@ -441,9 +441,9 @@ div.page-right > div ~ div {
   margin-top: 20px;
 }
 
-div.sub-panel {
+/* div.sub-panel {
   position: relative;
-}
+} */
 
 .sub-panel div#loading-overlay {
   display: none;
@@ -656,10 +656,126 @@ div.personal-journal {
 #journal-tabs {
   padding: 20px 10px;
   width: 180px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /* border-bottom: 5px solid transparent; */
+}
+
+#journal-tabs::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 20px;
+}
+
+/* Track */
+#journal-tabs::-webkit-scrollbar-track {
+  background: #301f10;
+  border-radius: 20px;
+}
+#journal-tabs::-webkit-scrollbar-thumb {
+  background: #f8ae62;
+}
+
+#journal-tabs-button {
+  padding: 20px 10px;
+  width: 180px;
   display: flex;
   flex-direction: column;
 }
+
+#addContentButton {
+  font-family: "Friz Quadrata TT", Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5px;
+  color: #f8ae62;
+  padding: 2px 0;
+  margin-bottom: 5px;
+  background: url("../img/desktop-window/content-tab.png");
+  border: 2.14427px solid #462303;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-position: center;
+  background-size: cover;
+  height: 30px;
+}
+
+.tab-action-button {
+  font-family: "Friz Quadrata TT", Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5px;
+  color: #f8ae62;
+  height: 30px;
+  background: url("../img/desktop-window/tab-bg.png");
+  border: 2.14427px solid #462303;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #journal-tabs .tab-link {
+  font-family: "Friz Quadrata TT", Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5px;
+  color: #f8ae62;
+  margin-bottom: 5px;
+  font-size: 12px;
+  padding-top: 8px;
+  background: url("../img/desktop-window/tab-bg.png");
+  border: 2.14427px solid #462303;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-position: center;
+  background-size: cover;
+}
+
+#journal-tabs .active-tab {
+  background: url("../img/desktop-window/tab-bg-active.png");
+  border: 2.14427px solid #462303;
+  background-position: center;
+  background-size: cover;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content */
+.modal .modal-content {
+  margin-left: 180px;
+  padding: 20px;
+  width: 470px;
+  height: 180px;
+  background-image: url("../img/desktop-window/personal-journal-right-bg-2.png");
+  background-position: center center;
+  background-size: cover;
+  border: 2.14427px solid #462303;
+}
+
+.modal .modal-content-add {
+  margin-left: 180px;
+  padding: 20px 40px;
+  width: 700px;
+  background-image: url("../img/desktop-window/content-modal.png");
+  background-position: center center;
+  background-size: cover;
+}
+
+.modal .submitButton,
+.submitButton2,
+.cancelButton,
+.cancelButton2 {
   font-family: "Friz Quadrata TT", Arial, Helvetica, sans-serif;
   letter-spacing: 0.5px;
   color: #f8ae62;
@@ -668,11 +784,96 @@ div.personal-journal {
   border-radius: 4px;
   margin-bottom: 5px;
   border: 2.5px solid #462303;
+  margin-top: 20px;
 }
 
-.active-tab {
-  background: #583612 !important;
+/* The Close Button */
+.modal .close,
+.myModal2Close {
+  content: url("../img/in-game-window/button/close.png");
+  float: right;
+  cursor: pointer;
 }
+
+.modal .ContentModalClose {
+  content: url("../img/in-game-window/button/close.png");
+  float: right;
+  cursor: pointer;
+}
+
+.modal .editContentModalClose {
+  content: url("../img/in-game-window/button/close.png");
+  float: right;
+  cursor: pointer;
+}
+
+.modal .modalTitle {
+  font-family: Friz Quadrata;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 13px;
+  color: #433022;
+}
+.modal .modalTitle2 {
+  font-family: Friz Quadrata;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 13px;
+  color: #433022;
+  margin-left: 12px;
+}
+
+.modal #myInput,
+#myInput2 {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  padding-left: 10px;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2.14427px solid #462303;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 40px;
+  width: 90%;
+  margin-left: 12px;
+  transition: 0.3s;
+  box-shadow: inset 0 0 0 none;
+}
+.checkBox {
+  display: block;
+  margin-top: 5px;
+  margin-left: 10px;
+  color: #433022;
+}
+
+.modal #myInput,
+#myInput2:focus {
+  outline: none;
+}
+
+.modal #saveButton,
+#myModal2Save {
+  font-family: "Friz Quadrata TT", Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5px;
+  padding: 5px 15px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  color: #f8ae62;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../img/desktop-window/save.png);
+  background-position: center;
+  background-size: cover;
+  border: 2.14427px solid #462303;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+/* div.journal-content .active {
+  display: none;
+} */
 
 .journal-content {
   width: 350px;
@@ -682,15 +883,273 @@ div.personal-journal {
   flex-direction: column;
 }
 
+.journal-content .journalModalHeader {
+  font-family: Reaver;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 0px;
+  color: #764d26;
+}
+
+.journal-content .container {
+  min-width: 100%;
+  padding: 0.5rem 0;
+  border-radius: 4px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.journal-content #contentTitle {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  padding-left: 10px;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2.14427px solid #462303;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 40px;
+  width: 100%;
+  transition: 0.3s;
+  box-shadow: inset 0 0 0 none;
+}
+
+.journal-content #contentTitle:focus {
+  outline: none;
+}
+.journal-content #editContentTitle {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  padding-left: 10px;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2.14427px solid #462303;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 40px;
+  width: 100%;
+  transition: 0.3s;
+  box-shadow: inset 0 0 0 none;
+}
+
+.journal-content #editContentTitle:focus {
+  outline: none;
+}
+
+.journal-content .wrapper h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #0057fa;
+  /* text-align: center; */
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.journal-content .richEditor {
+  margin-top: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2.14427px solid #462303;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.journal-content .richEditor .toolbar {
+  display: flex;
+  justify-content: center;
+  background: #653d19;
+  padding: 0.5rem 0;
+  border: 1px solid rgba(139, 138, 138, 0.233);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  flex-wrap: wrap;
+  transition: all 0.8s;
+}
+.journal-content .richEditor .toolbar button {
+  background: none;
+  border: none;
+  outline: none;
+  margin: 0 0.3rem;
+  cursor: pointer;
+  transition: all 0.3s, color 0.1s ease-in;
+  color: #d9af7a;
+}
+
+.journal-content .richEditor .toolbar button:hover {
+  color: #c79456;
+}
+
+.journal-content .richEditor .editor {
+  min-height: 200px;
+  max-height: 200px;
+  max-width: 100%;
+  outline: none;
+  border: none;
+  border: 1px solid rgba(128, 128, 128, 0.233);
+  padding: 1rem;
+  text-align: left;
+  line-height: 1.4;
+  overflow: auto;
+}
+.journal-content .richEditor .editor ul {
+  margin-left: 1rem;
+}
+.journal-content .richEditor .editor img {
+  width: 200px;
+}
+
+.journal-content .btn {
+  display: flex;
+  gap: 5px;
+}
+
+.journal-content #editContentModal .wrapper h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #0057fa;
+  /* text-align: center; */
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.journal-content #editContentModal .richEditor {
+  margin-top: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2.14427px solid #462303;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.journal-content #editContentModal .richEditor .toolbar {
+  display: flex;
+  justify-content: center;
+  background: #653d19;
+  padding: 0.5rem 0;
+  border: 1px solid rgba(139, 138, 138, 0.233);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  flex-wrap: wrap;
+  transition: all 0.8s;
+}
+.journal-content #editContentModal .richEditor .toolbar button {
+  background: none;
+  border: none;
+  outline: none;
+  margin: 0 0.3rem;
+  cursor: pointer;
+  transition: all 0.3s, color 0.1s ease-in;
+  color: #d9af7a;
+}
+
+.journal-content #editContentModal .richEditor .toolbar button:hover {
+  color: #da9a4c;
+}
+
+.journal-content #editContentModal .richEditor .editEditor {
+  min-height: 200px;
+  max-height: 200px;
+  max-width: 100%;
+  outline: none;
+  border: none;
+  border: 1px solid rgba(128, 128, 128, 0.233);
+  padding: 1rem;
+  text-align: left;
+  line-height: 1.4;
+  overflow: auto;
+}
+.journal-content #editContentModal .richEditor .editEditor ul {
+  margin-left: 1rem;
+}
+.journal-content #editContentModal .richEditor .editEditor img {
+  width: 200px;
+}
+
+.journal-content #editContentModal .btn {
+  display: flex;
+  gap: 5px;
+}
+
+.journal-content #journal-item-container {
+  height: 380px;
+  padding: 0px 10px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.journal-content #journal-item-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.journal-content #journal-item-container::-webkit-scrollbar-track {
+  background: #301f10;
+  border-radius: 20px;
+}
+
+.journal-content #journal-item-container::-webkit-scrollbar-thumb {
+  background: #f8ae62;
+}
+
+.textSpan {
+  float: right;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  color: #462303;
+  position: relative;
+  bottom: 3px;
+}
+
+.textSpan2 {
+  float: right;
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+  color: #e1be88;
+  position: relative;
+  bottom: 6px;
+  right: 5px;
+}
+
+.editSpan {
+  float: left;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  color: #462303;
+  position: relative;
+  bottom: 4px;
+  left: 3px;
+}
+
+.editSpan2 {
+  float: left;
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+  color: #e1be88;
+  position: relative;
+  bottom: 7px;
+  left: 3px;
+}
+
+/* Track */
+.journal-content #journal-item-container::-webkit-scrollbar-track {
+  background: #976232;
+}
+.journal-content #journal-item-container::-webkit-scrollbar-thumb {
+  background: #462303;
+}
+
 .accordion {
   font-family: "Friz Quadrata TT", Arial, Helvetica, sans-serif;
   letter-spacing: 0.5px;
   color: #f8ae62;
-  background: #976232;
   padding: 4.5px 0;
   text-align: center;
+  background: url("../img/desktop-window/content-tab.png");
+  border: 2.14427px solid #462303;
+  box-sizing: border-box;
   border-radius: 4px;
-  border: 2.5px solid #462303;
+  background-position: center;
+  background-size: cover;
+  height: 30px;
 }
 
 .accordion::after {
@@ -705,7 +1164,7 @@ div.personal-journal {
 }
 
 .panel-accordion {
-  background: black;
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 1em;
   border-radius: 2px;
 }
@@ -715,7 +1174,7 @@ div.personal-journal {
 }
 
 .journal-item .active {
-  background: black;
+  background-color: rgba(0, 0, 0, 0.6);
   margin: 0;
   padding: 1em;
 }
