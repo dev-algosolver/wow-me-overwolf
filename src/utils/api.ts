@@ -165,10 +165,11 @@ export const storeJournals = async (data) => {
 };
 
 
-export const updateJournals = async (journelID ,data) => {
+export const updateJournals = async (journelID, data) => {
   try {
     const res = await api.put(`/journals/${journelID}`, data);
     if (res.data.success) {
+      // console.log("edited call from api");
       return res.data;
     } else {
       console.log(res.data);
@@ -180,7 +181,7 @@ export const updateJournals = async (journelID ,data) => {
   return null;
 };
 
-export const storeJournalContent = async (id,data) => {
+export const storeJournalContent = async (id, data) => {
   try {
     const res = await api.post(`/journals/${id}/content`, data);
     if (res.data.success) {
@@ -196,7 +197,7 @@ export const storeJournalContent = async (id,data) => {
 };
 
 
-export const deleteJournalContent = async (journelID,contentID) => {
+export const deleteJournalContent = async (journelID, contentID) => {
   try {
     const res = await api.delete(`/journals/${journelID}/content/${contentID}`);
     console.log(res)
@@ -214,7 +215,7 @@ export const deleteJournalContent = async (journelID,contentID) => {
 };
 
 
-export const editJournalContent = async (journelID,contentID , data) => {
+export const editJournalContent = async (journelID, contentID, data) => {
   try {
     const res = await api.put(`/journals/${journelID}/content/${contentID}`, data);
     console.log(res)

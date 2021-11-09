@@ -328,10 +328,12 @@ class Desktop extends AppWindow {
   }
 
   private async getUserJournals() {
-    const response = await getJournals();
+    let response = await getJournals();
     const journalList = document.getElementById("journal-tabs");
 
-    for (let i = 0; i < response.data.length; i++) {
+    // let count = 0;
+    for (let i = 0; i < response?.data.length; i++) {
+      console.log("loop started", i);
       const btn = document.createElement("div");
       btn.innerHTML = response.data[i].name;
       btn.setAttribute("data-id", response.data[i]._id);
@@ -364,18 +366,17 @@ class Desktop extends AppWindow {
         (document.getElementById("myInput2") as HTMLInputElement).value = response.data[i].name;
         console.log("object", response.data[i])
         const cb = document.getElementById("accept") as HTMLInputElement;
-        cb.value = response.data[i].template
+        cb.value = response.data[i].template;
       })
-
 
       deleteSpan.addEventListener("click", (e) => {
         e.stopPropagation();
         deleteJournal(response.data[i]._id);
-        let item = document.querySelector(`[data-id="${response.data[i]._id}"]`);
-        item.remove();
-        let content = response.data;
-        content = content.filter((con) => con._id != response.data[i]._id);
-        response.data = content;
+        const oldJournalList = document.getElementById('journal-tabs');
+        oldJournalList.innerHTML = '';
+        response.data = [];
+        this.getUserJournals();
+
         const journalContainer = document.getElementById(
           "journal-item-container"
         );
@@ -390,9 +391,9 @@ class Desktop extends AppWindow {
           elems.classList.remove("active-tab");
         }
         target.classList.add("active-tab");
-        console.log(response);
         const selectedJournal = response.data[i];
-        console.log(selectedJournal);
+        console.log("response data", response.data);
+        console.log(i, selectedJournal);
         const journalContainer = document.getElementById(
           "journal-item-container"
         );
@@ -471,7 +472,6 @@ class Desktop extends AppWindow {
     }
   }
 
-
   private async storeUserJournals() {
     const saveButton = document.getElementById("saveButton")
 
@@ -479,11 +479,11 @@ class Desktop extends AppWindow {
       e.preventDefault();
       let inputVal = (document.getElementById("myInput") as HTMLInputElement).value;
       const cb = document.getElementById("accept") as HTMLInputElement;
-      const check = cb.checked
+      // const check = cb.checked
       const data = {
         battleId: "a232df3dfafa213",
         name: inputVal,
-        template: check,
+        // template: check,
       }
       console.log(data)
       const response = await storeJournals(data);
@@ -506,16 +506,17 @@ class Desktop extends AppWindow {
     const saveButtonEdit = document.getElementById("myModal2Save")
 
     saveButtonEdit.addEventListener("click", async (e) => {
+      // console.log("from saveButton");
       e.preventDefault();
       let inputVal = (document.getElementById("myInput2") as HTMLInputElement).value;
       const cb = document.getElementById("accept") as HTMLInputElement;
-      const check = cb.checked
+      // const check = cb.checked
       let content = document.querySelector(".edit-journel");
       const contentID = content.getAttribute("data-id")
       const data = {
         battleId: "a232df3dfafa213",
         name: inputVal,
-        template: check,
+        // template: check,
       }
       const response = await updateJournals(contentID, data);
       if (response.success) {
