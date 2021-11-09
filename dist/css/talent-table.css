@@ -1,0 +1,100 @@
+.talent-table {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.talent-table .talent-row {
+    background: url(../img/in-game-window/background/sprite.png);
+    height: 38px;
+    line-height: 38px;
+    display: flex;
+}
+
+.talent-table .talent-row .outer {
+    background: url(../img/in-game-window/background/sprite.png) 0 -38px;
+    height: 38px;
+    overflow: hidden;
+    padding: 0;
+    color: #bbb;
+    width: 170px;
+}
+
+.talent-table .talent-row .outer[data-selected="yes"] {
+    color: #eee;
+    background-position: 0 -114px;
+}
+
+.talent-table .talent-row .outer[data-selected="yes"] .inner {
+    background-position: right -152px;
+}
+
+.talent-table .talent-row .outer:first-child {
+    width: 50px;
+    color: #bbb;
+    font-size: 16px;
+}
+
+.talent-table .talent-row[data-selected="yes"] .outer:first-child {
+    color: #ffd100;
+}
+
+.talent-table .talent-row .outer .inner {
+    background: url(../img/in-game-window/background/sprite.png) right -38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+}
+
+.talent-table .talent-row .outer .inner i.talent-icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    margin-right: 5px;
+    background-size: 32px 32px;
+}
+
+.talent-table .talent-row .outer .inner span {
+    line-height: normal;
+    width: 70px;
+    font-size: 10px;
+}
+
+.talent-table .talent-row .outer .inner span.percent {
+    width: 30px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.talent-table .talent-row .outer[data-selected="no"] .inner i.talent-icon {
+    filter: grayscale(100%);
+}
+
+main #talent-anim-panel.fadeIn .outer,
+main #talent-anim-panel.fadeIn .outer {
+    animation-name: fadeIn;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+main #talent-anim-panel.fadeOut .outer,
+main #talent-anim-panel.fadeOut .outer {
+    animation-name: fadeOut;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}

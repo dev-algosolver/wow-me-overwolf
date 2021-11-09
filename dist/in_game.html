@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="../../css/general.css" />
+  <link rel="stylesheet" href="../../css/header.css" />
+  <link rel="stylesheet" href="../../css/ingame.css" />
+  <link rel="stylesheet" href="../../css/resize.css" />
+  <link rel="stylesheet" href="../../css/modal.css" />
+  <link rel="stylesheet" href="../../css/dropdown.css" />
+  <link rel="stylesheet" href="../../css/ranger.css" />
+  <link rel="stylesheet" href="../../css/talent-table.css" />
+  <title>WoW.me - In-Game page</title>
+<script defer src="js/in_game.js"></script></head>
+<body class="in-game image-border">
+  <!-- -------------------------------- Header ------------------------------- -->
+
+  <header id="header" class="app-header">
+    <div class="menu-panel">
+      <button id="btn-talent-picker">Talent Picker</button>
+      <button id="btn-condult-picker" class="work-in-progress" message="Were still working on this feature, coming soon!">Condult Picker</button>
+      <button id="btn-personal-journal" class="work-in-progress" message="Were still working on this feature, coming soon!">Personal Journal</button>
+      <button id="btn-gear-optimizer" class="work-in-progress" message="Were still working on this feature, coming soon!">Gear Optimizer</button>
+    </div>
+    <h1 style="margin: auto;">
+      Show/Hide:
+      <a href="overwolf://settings/games-overlay?hotkey=showhide&gameId=765" id="hotkey" style="font-weight: bold; color: white;"></a>
+    </h1>
+    <div class="window-controls-group">
+      <button class="icon window-control" id="minimizeButton">
+        <img src="/img/in-game-window/button/minimize.png" alt="Minimize" />
+      </button>
+      <!-- <button class="icon window-control" id="maximizeButton">
+        <img src="/img/in-game-window/button/maximize.png" alt="Maximize" id="maximize-img" />
+      </button> -->
+      <button class="icon window-control window-control-close" id="closeButton">
+        <img src="/img/in-game-window/button/close.png" alt="Close" />
+      </button>
+    </div>
+  </header>
+  <!-- --------------------------------- Main -------------------------------- -->
+
+  <div class="range-slider opacity-slider">
+    <input type="range" id="opacity-range" value="100" step="1" min="50" max="100" />
+  </div>
+
+  <main>
+    <div id="scale">
+      <div class="main-top">
+        <div class="container">
+          <div id="message">
+            <div>It's work in progress.</div>
+          </div>
+          <div class="condition-panel image-border">
+            <div id="raid_dungeon-switch__container" data="dungeon">
+              <a href="#" id="switch_dungeon">Dungeon</a>
+              <div id="raid_dungeon-switch"></div>
+              <a href="#" id="switch_raid">Raid</a>
+            </div>
+            <div id="raid_dungeon-select-box__container">
+              <label>Raid / Dungeon</label>
+            </div>
+            <div id="class-select-box__container">
+              <label>Class</label>
+            </div>
+            <div>
+              <div id="key_level-select-box__container">
+                <label>Raid Level</label>
+              </div>
+              <div id="ranger__container">
+                <label>Keystone Level</label>
+                <div class="range-slider">
+                  <input type="range" value="1" step="1" min="1" max="45" id="key-stone-level-min" />
+                  <input type="range" value="45" step="1" min="1" max="45" id="key-stone-level-max" />
+                  <span id="key-stone-level-text"></span>
+                </div>
+              </div>
+            </div>
+            <div id="specs-select-box__container">
+              <label>Specs</label>
+            </div>
+            <div>
+              <div id="raid_boss-select-box__container">
+                <label>Raid Boss</label>
+              </div>
+            </div>
+            <div id="checkbox__container">
+              <input type="checkbox" id="advanced_filters" />
+              <label for="advanced_filters">Advanced Filters</label>
+              <input type="checkbox" id="tree_mode" />
+              <label for="tree_mode">Full Builds</label>
+            </div>
+          </div>
+          <div class="talent-panel image-border">
+            <div id="talent-anim-panel">
+              <div class="talent-panel-header">
+                <label id="talent-panel-title">Most Popular Talent Trees</label>
+                <div id="tree_mode_action_panel">
+                  <label id="pick_rate">Pick Rate : 90%</label>
+                  <button id="btn_prev"><img src="/img/in-game-window/button/prev.png" alt="Prev" /></button>
+                  <button id="btn_next"><img src="/img/in-game-window/button/next.png" alt="Next" /></button>
+                  <label id="tree_index">1 / 4</label>
+                </div>
+              </div>
+              <div id="talent-table-container"></div>
+            </div>
+          </div>
+          <div class="action-panel image-border" id="action-panel">
+            <div>
+              <button id="btn_refresh">Refresh</button>
+              <button id="btn_share" class="work-in-progress" message="You'd click here to share your talents with someone else.">Share</button>
+              <button id="btn_donate" class="work-in-progress" message="You'd click here to donate to our team and help us bring more features to you!">Donate</button>
+              <button id="btn_ad_free" class="work-in-progress" message="We’re working on a premium version to remove all advertisement">Ad free</button>
+              <button id="btn_feedback" class="work-in-progress" message="You'd click here to send us feedback and help us improve">Feedback</button>
+            </div>
+          </div>
+        </div>
+        <div class="right-ad-panel image-border">
+          <div id="right-ad-div"></div>
+        </div>
+      </div>
+      <div class="main-bottom bottom-ad-panel image-border">
+        <div id="bottom-ad-div"></div>
+      </div>
+    </div>
+  </main>
+  <div class="resize horizontal top" edge="Top"></div>
+  <div class="resize vertical left" edge="Left"></div>
+  <div class="resize vertical right" edge="Right"></div>
+  <div class="resize horizontal bottom" edge="Bottom"></div>
+
+  <div class="resize corner top-left" edge="TopLeft"></div>
+  <div class="resize corner top-right" edge="TopRight"></div>
+  <div class="resize corner bottom-left" edge="BottomLeft"></div>
+  <div class="resize corner bottom-right" edge="BottomRight"></div>
+
+  <script src="https://content.overwolf.com/libs/ads/latest/owads.min.js" async onload="onOwAdReady()"></script>
+  <script>
+    let _rightOwAd = null;
+    let _bottomOwAd = null;
+   
+    setTimeout(() => {
+      if (!_rightOwAd || !_bottomOwAd) {
+        console.error("Couldn't load owads.min.js!");
+      }
+    }, 20000);
+   
+    function onOwAdReady() {
+      try {
+        if (!OwAd) {
+          setTimeout(() => {
+            if (!_rightOwAd || !_bottomOwAd) {
+              onOwAdReady();
+            }
+          }, 2000);
+          
+          return;
+        }
+    
+        _rightOwAd = new OwAd(document.getElementById("right-ad-div"), {size: {width: 160, height: 600}});
+        _bottomOwAd = new OwAd(document.getElementById("bottom-ad-div"), {size: {width: 728, height: 90}});
+
+        function onWindowStateChanged(state) {
+          if (state && state.window_name === "in_game") {
+            if (state.window_state === "minimized") {
+              _rightOwAd.removeAd();
+              _bottomOwAd.removeAd();
+            } else if (state.window_state === "normal" && state.window_previous_state === "minimized") {
+              _rightOwAd.refreshAd();
+              _bottomOwAd.refreshAd();
+            }
+          }
+        }
+
+        overwolf.windows.onStateChanged.removeListener(onWindowStateChanged);
+        overwolf.windows.onStateChanged.addListener(onWindowStateChanged);
+
+        function onWindowScrolled(e) {
+          if (elMain.scrollTop > elMain.scrollHeight - elMain.offsetHeight - 90) { // end of page
+            _bottomOwAd.refreshAd();
+          } else {
+            _bottomOwAd.removeAd();
+          }
+        }
+
+        const elMain = document.getElementsByTagName('main')[0];
+        elMain.removeEventListener('scroll', onWindowScrolled);
+        elMain.addEventListener('scroll', onWindowScrolled);
+        window.removeEventListener('resize', onWindowScrolled);
+        window.addEventListener('resize', onWindowScrolled);
+
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    onOwAdReady();
+
+  </script>
+  <script>
+    // Standard Google Universal Analytics code
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      },
+        i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      // Note: https protocol here
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-144253676-3', 'auto');
+
+    // Removes failing protocol check. @see: http://stackoverflow.com/a/22152353/1958200
+    ga('set', 'checkProtocolTask', function () { });
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview', '/in_game.html');
+  </script>
+</body>
+</html>
