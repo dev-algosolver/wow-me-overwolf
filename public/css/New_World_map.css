@@ -1,0 +1,1519 @@
+/* MacBook Pro - 2 */
+
+position: relative;
+width: 1440px;
+height: 900px;
+
+background: #17161A;
+
+
+/* Rectangle 1 */
+
+position: absolute;
+width: 90px;
+height: 70px;
+left: 0px;
+top: 0px;
+
+background: #212027;
+
+
+/* Group 47 */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 25px;
+top: 14.5px;
+
+
+
+/* Ellipse 1 */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 25px;
+top: 14.5px;
+
+border: 1.84615px solid #F7B50B;
+box-sizing: border-box;
+
+
+/* Group 1 */
+
+position: absolute;
+width: 25.23px;
+height: 21.88px;
+left: 33px;
+top: 23.73px;
+
+filter: drop-shadow(0px 0px 5.53846px rgba(255, 212, 0, 0.89));
+
+
+/* image */
+
+position: absolute;
+width: 25.23px;
+height: 21.88px;
+left: 33px;
+top: 23.73px;
+
+background: url(.png);
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 25.23px;
+height: 22.51px;
+left: 33px;
+top: 23.73px;
+
+background: #F7B50B;
+
+
+/* Rectangle 3 */
+
+position: absolute;
+width: 1350px;
+height: 70px;
+left: 90px;
+top: 0px;
+
+background: #212027;
+
+
+/* Group 54 */
+
+position: absolute;
+width: 341px;
+height: 38px;
+left: 816px;
+top: 17px;
+
+
+
+/* Group 46 */
+
+position: absolute;
+width: 341px;
+height: 38px;
+left: 816px;
+top: 17px;
+
+
+
+/* ui_button_primary_texture */
+
+position: absolute;
+width: 341px;
+height: 38px;
+left: 816px;
+top: 17px;
+
+background: #17161A;
+border-radius: 4px;
+
+
+/* Search ... */
+
+position: absolute;
+width: 57px;
+height: 17px;
+left: 836px;
+top: 27px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #525252;
+
+
+
+/* Group 53 */
+
+position: absolute;
+width: 38px;
+height: 38px;
+left: 1119px;
+top: 17px;
+
+
+
+/* ui_button_primary_texture */
+
+position: absolute;
+width: 38px;
+height: 38px;
+left: 1119px;
+top: 17px;
+
+background: linear-gradient(180deg, #F6B50C 0%, #FFB800 100%);
+box-shadow: 0px 0px 8px rgba(255, 212, 0, 0.4);
+border-radius: 5px;
+
+
+/* Vector */
+
+position: absolute;
+left: 78.4%;
+right: 20.35%;
+top: 3%;
+bottom: 95%;
+
+background: #212027;
+
+
+/* Line 1 */
+
+position: absolute;
+width: 900px;
+height: 0px;
+left: -50px;
+top: 0px;
+
+border: 1px solid #27272C;
+transform: rotate(90deg);
+
+
+/* Rectangle 7 */
+
+position: absolute;
+width: 1320px;
+height: 800px;
+left: 60px;
+top: 85px;
+
+background: #1D1C23;
+border-radius: 8px;
+
+
+/* Map */
+
+position: absolute;
+width: 45px;
+height: 30px;
+left: 193px;
+top: 20px;
+
+font-family: IM FELL DW Pica;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 30px;
+/* identical to box height */
+text-align: center;
+
+text-shadow: 0px 0px 5.53846px rgba(255, 212, 0, 0.89);
+
+
+/* Personal Journal */
+
+position: absolute;
+width: 159px;
+height: 30px;
+left: 338px;
+top: 20px;
+
+font-family: IM FELL DW Pica;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 30px;
+/* identical to box height */
+text-align: center;
+
+color: #535770;
+
+
+
+/* screencapture-newworld-map-2021-10-20-18_31_48 1 */
+
+position: absolute;
+width: 650px;
+height: 674px;
+left: 375px;
+top: 148px;
+
+background: url(.png);
+
+
+/* Ellipse 3 */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 1336px;
+top: 9px;
+
+background: url(.png);
+
+
+/* Rectangle 8 */
+
+position: absolute;
+width: 87px;
+height: 4px;
+left: 172px;
+top: 66px;
+
+background: linear-gradient(180deg, #F2B411 0%, #FFB800 100%);
+box-shadow: 0px -1px 8px rgba(255, 212, 0, 0.4);
+border-radius: 5px;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+width: 87px;
+height: 38px;
+left: 1194px;
+top: 18px;
+
+background: linear-gradient(180deg, #F6B50C 0%, #FFB800 100%);
+/* Drop Shadow */
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 4px;
+
+
+/* Filters */
+
+position: absolute;
+width: 40px;
+height: 17px;
+left: 1206px;
+top: 28px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #212027;
+
+
+
+/* mono-icons:filter */
+
+position: absolute;
+width: 18px;
+height: 18px;
+left: 1253px;
+top: 28px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 16.67%;
+right: 16.67%;
+top: 12.49%;
+bottom: 12.49%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 16.67%;
+right: 16.67%;
+top: 12.49%;
+bottom: 12.49%;
+
+background: #212027;
+
+
+/* marker 1 */
+
+position: absolute;
+width: 45px;
+height: 55px;
+left: 720px;
+top: 447px;
+
+background: url(.png);
+
+
+/* Rectangle 12 */
+
+position: absolute;
+width: 960px;
+height: 300px;
+left: 240px;
+top: 600px;
+
+background: linear-gradient(0deg, #17161A, #17161A), url(.jpg);
+background-blend-mode: multiply, normal;
+border-radius: 4px;
+
+
+/* Group 58 */
+
+position: absolute;
+width: 211.64px;
+height: 137.98px;
+left: 115px;
+top: 366px;
+
+
+
+/* Group 49 */
+
+position: absolute;
+width: 211.64px;
+height: 54px;
+left: 115px;
+top: 366px;
+
+
+
+/* Group 48 */
+
+position: absolute;
+width: 211.64px;
+height: 30.01px;
+left: 115px;
+top: 389.99px;
+
+
+
+/* Vector 4 */
+
+position: absolute;
+width: 23.32px;
+height: 29.98px;
+left: 303.32px;
+top: 389.99px;
+
+background: linear-gradient(180deg, #141414 48.23%, #5A5A5A 100%);
+border: 1.36291px solid #474852;
+box-sizing: border-box;
+box-shadow: 0px 0px 5.45165px rgba(0, 0, 0, 0.1);
+
+
+/* Vector 5 */
+
+position: absolute;
+width: 23.32px;
+height: 29.98px;
+left: 138.32px;
+top: 419.98px;
+
+background: linear-gradient(180deg, #141414 48.23%, #5A5A5A 100%);
+border: 1.36291px solid #474852;
+box-sizing: border-box;
+box-shadow: 0px 0px 5.45165px rgba(0, 0, 0, 0.1);
+transform: rotate(180deg);
+
+
+/* Rectangle 7 */
+
+position: absolute;
+width: 111px;
+height: 7px;
+left: 153.94px;
+top: 401px;
+
+background: linear-gradient(180deg, #F2B411 0%, #FFB800 100%);
+box-shadow: 0px -1px 8px rgba(255, 212, 0, 0.4);
+border-radius: 5px;
+
+
+/* Ellipse 2 */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 262.94px;
+top: 390px;
+
+background: linear-gradient(180deg, #141414 48.23%, #5A5A5A 100%);
+border: 1.36291px solid #474852;
+box-sizing: border-box;
+box-shadow: 0px 0px 5.45165px rgba(0, 0, 0, 0.1);
+
+
+/* 100 */
+
+position: absolute;
+width: 18px;
+height: 12px;
+left: 268.94px;
+top: 399px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: bold;
+font-size: 10px;
+line-height: 12px;
+/* identical to box height */
+text-align: center;
+
+text-shadow: 0px -1px 8px rgba(255, 212, 0, 0.4);
+
+
+/* Map Opacity */
+
+position: absolute;
+width: 73px;
+height: 18px;
+left: 184.94px;
+top: 366px;
+
+font-family: IM FELL DW Pica;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+text-shadow: 0px -1px 8px rgba(255, 212, 0, 0.4);
+
+
+/* Group 51 */
+
+position: absolute;
+width: 211.64px;
+height: 53.98px;
+left: 115px;
+top: 450px;
+
+
+
+/* Zoom Map */
+
+position: absolute;
+width: 62px;
+height: 18px;
+left: 188.94px;
+top: 450px;
+
+font-family: IM FELL DW Pica;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+text-shadow: 0px -1px 8px rgba(255, 212, 0, 0.4);
+
+
+/* Group 50 */
+
+position: absolute;
+width: 211.64px;
+height: 30.98px;
+left: 115px;
+top: 473px;
+
+
+
+/* Vector 3 */
+
+position: absolute;
+width: 23.32px;
+height: 29.98px;
+left: 303.32px;
+top: 474px;
+
+background: linear-gradient(180deg, #141414 48.23%, #5A5A5A 100%);
+border: 1.36291px solid #474852;
+box-sizing: border-box;
+box-shadow: 0px 0px 5.45165px rgba(0, 0, 0, 0.1);
+
+
+/* Vector 2 */
+
+position: absolute;
+width: 23.32px;
+height: 29.98px;
+left: 138.32px;
+top: 503.98px;
+
+background: linear-gradient(180deg, #141414 48.23%, #5A5A5A 100%);
+border: 1.36291px solid #474852;
+box-sizing: border-box;
+box-shadow: 0px 0px 5.45165px rgba(0, 0, 0, 0.1);
+transform: rotate(180deg);
+
+
+/* Rectangle 5 */
+
+position: absolute;
+width: 133.57px;
+height: 6.81px;
+left: 154.09px;
+top: 484.9px;
+
+background: #141216;
+border-radius: 6.81457px;
+
+
+/* Rectangle 6 */
+
+position: absolute;
+width: 58px;
+height: 7px;
+left: 153.94px;
+top: 485px;
+
+background: linear-gradient(180deg, #F2B411 0%, #FFB800 100%);
+box-shadow: 0px -1px 8px rgba(255, 212, 0, 0.4);
+border-radius: 5px;
+
+
+/* Ellipse 1 */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 208.94px;
+top: 473px;
+
+background: linear-gradient(180deg, #141414 48.23%, #5A5A5A 100%);
+border: 1.36291px solid #474852;
+box-sizing: border-box;
+box-shadow: 0px 0px 5.45165px rgba(0, 0, 0, 0.1);
+
+
+/* 50 */
+
+position: absolute;
+width: 12px;
+height: 12px;
+left: 217.94px;
+top: 482px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: bold;
+font-size: 10px;
+line-height: 12px;
+/* identical to box height */
+text-align: center;
+
+text-shadow: 0px -1px 8px rgba(255, 212, 0, 0.4);
+
+
+/* Line 2 */
+
+position: absolute;
+width: 1440px;
+height: 0px;
+left: 0px;
+top: 70px;
+
+border: 1px solid #27272C;
+
+
+/* Rectangle 13 */
+
+position: absolute;
+width: 700px;
+height: 3px;
+left: 365px;
+top: 809px;
+
+
+
+/* Group 66 */
+
+position: absolute;
+width: 710px;
+height: 189px;
+left: 365px;
+top: 656px;
+
+
+
+/* Group 64 */
+
+position: absolute;
+width: 687.98px;
+height: 0.66px;
+left: 376px;
+top: 791px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 26.11%;
+right: 50%;
+top: 87.89%;
+bottom: 12.04%;
+
+background: #FAB607;
+
+
+/* Vector */
+
+position: absolute;
+left: 50%;
+right: 26.11%;
+top: 87.89%;
+bottom: 12.04%;
+
+background: #FAB607;
+
+
+/* Group 63 */
+
+position: absolute;
+width: 710px;
+height: 30px;
+left: 365px;
+top: 696px;
+
+
+
+/* Group 59 */
+
+position: absolute;
+width: 350px;
+height: 30px;
+left: 365px;
+top: 696px;
+
+
+
+/* big b */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 365px;
+top: 696px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 365px;
+top: 696px;
+
+background: linear-gradient(180deg, rgba(3, 3, 3, 0.6) 48.23%, rgba(90, 90, 90, 0.6) 100%), url(.png);
+
+
+/* Cities */
+
+position: absolute;
+width: 35px;
+height: 17px;
+left: 403px;
+top: 703px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+color: #EEEFED;
+
+
+
+/* big b */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 485px;
+top: 696px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 485px;
+top: 696px;
+
+background: linear-gradient(180deg, rgba(3, 3, 3, 0.6) 48.23%, rgba(90, 90, 90, 0.6) 100%), url(.png);
+
+
+/* NPCs */
+
+position: absolute;
+width: 33px;
+height: 17px;
+left: 524px;
+top: 703px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+color: #EEEFED;
+
+
+
+/* big b */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 605px;
+top: 696px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 605px;
+top: 696px;
+
+background: linear-gradient(180deg, rgba(3, 3, 3, 0.6) 48.23%, rgba(90, 90, 90, 0.6) 100%), url(.png);
+
+
+/* Zones */
+
+position: absolute;
+width: 38px;
+height: 17px;
+left: 641px;
+top: 702px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+color: #EEEFED;
+
+
+
+/* Group 60 */
+
+position: absolute;
+width: 350px;
+height: 30px;
+left: 725px;
+top: 696px;
+
+
+
+/* big b */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 725px;
+top: 696px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 725px;
+top: 696px;
+
+background: linear-gradient(180deg, rgba(3, 3, 3, 0.6) 48.23%, rgba(90, 90, 90, 0.6) 100%), url(.png);
+
+
+/* Location */
+
+position: absolute;
+width: 55px;
+height: 14.57px;
+left: 753px;
+top: 702.36px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+text-align: center;
+
+color: #EEEFED;
+
+
+
+/* big b */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 845px;
+top: 696px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 845px;
+top: 696px;
+
+background: linear-gradient(180deg, rgba(3, 3, 3, 0.6) 48.23%, rgba(90, 90, 90, 0.6) 100%), url(.png);
+
+
+/* Plants */
+
+position: absolute;
+width: 40px;
+height: 14.57px;
+left: 880px;
+top: 704px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+text-align: center;
+
+color: #EEEFED;
+
+
+
+/* big b */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 965px;
+top: 696px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 965px;
+top: 696px;
+
+background: linear-gradient(180deg, rgba(31, 31, 31, 0.6) 48.23%, rgba(255, 184, 0, 0.6) 100%), url(.png);
+
+
+/* Wood */
+
+position: absolute;
+width: 38px;
+height: 14.57px;
+left: 1001px;
+top: 703.71px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+text-align: center;
+
+color: #EEEFED;
+
+
+
+/* Group 65 */
+
+position: absolute;
+width: 710px;
+height: 30px;
+left: 365px;
+top: 741px;
+
+
+
+/* Group 61 */
+
+position: absolute;
+width: 350px;
+height: 30px;
+left: 725px;
+top: 741px;
+
+
+
+/* big b */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 725px;
+top: 741px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 725px;
+top: 741px;
+
+background: linear-gradient(180deg, rgba(3, 3, 3, 0.6) 48.23%, rgba(90, 90, 90, 0.6) 100%), url(.png);
+
+
+/* Ores */
+
+position: absolute;
+width: 34px;
+height: 19px;
+left: 763px;
+top: 747px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+
+color: #EEEFED;
+
+
+
+/* big b */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 845px;
+top: 741px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 845px;
+top: 741px;
+
+background: linear-gradient(180deg, rgba(3, 3, 3, 0.6) 48.23%, rgba(90, 90, 90, 0.6) 100%), url(.png);
+
+
+/* Essences */
+
+position: absolute;
+width: 64px;
+height: 19px;
+left: 868px;
+top: 747px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+
+color: #EEEFED;
+
+
+
+/* big b */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 965px;
+top: 741px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 965px;
+top: 741px;
+
+background: linear-gradient(180deg, rgba(3, 3, 3, 0.6) 48.23%, rgba(90, 90, 90, 0.6) 100%), url(.png);
+
+
+/* Monsters */
+
+position: absolute;
+width: 67px;
+height: 19px;
+left: 987px;
+top: 747px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+
+color: #EEEFED;
+
+
+
+/* Group 62 */
+
+position: absolute;
+width: 350px;
+height: 30px;
+left: 365px;
+top: 741px;
+
+
+
+/* big b */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 365px;
+top: 741px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 365px;
+top: 741px;
+
+background: linear-gradient(180deg, rgba(3, 3, 3, 0.6) 48.23%, rgba(90, 90, 90, 0.6) 100%), url(.png);
+
+
+/* Fishing */
+
+position: absolute;
+width: 52px;
+height: 19px;
+left: 394px;
+top: 747px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+
+color: #EEEFED;
+
+
+
+/* big b */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 485px;
+top: 741px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 485px;
+top: 741px;
+
+background: linear-gradient(180deg, rgba(3, 3, 3, 0.6) 48.23%, rgba(90, 90, 90, 0.6) 100%), url(.png);
+
+
+/* Chests */
+
+position: absolute;
+width: 48px;
+height: 19px;
+left: 516px;
+top: 747px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+
+color: #EEEFED;
+
+
+
+/* big b */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 605px;
+top: 741px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 110px;
+height: 30px;
+left: 605px;
+top: 741px;
+
+background: linear-gradient(180deg, rgba(3, 3, 3, 0.6) 48.23%, rgba(90, 90, 90, 0.6) 100%), url(.png);
+
+
+/* Documents */
+
+position: absolute;
+width: 83px;
+height: 19px;
+left: 619px;
+top: 747px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+
+color: #EEEFED;
+
+
+
+/* Filters */
+
+position: absolute;
+width: 63px;
+height: 30px;
+left: 683px;
+top: 656px;
+
+font-family: IM FELL DW Pica;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 30px;
+/* identical to box height */
+text-align: center;
+
+text-shadow: 0px 0px 5.53846px rgba(255, 212, 0, 0.89);
+
+
+/* Group 34 */
+
+position: absolute;
+width: 185px;
+height: 35px;
+left: 628px;
+top: 810px;
+
+
+
+/* button-with-bg */
+
+position: absolute;
+width: 185px;
+height: 35px;
+left: 628px;
+top: 810px;
+
+
+
+/* button-bg */
+
+position: absolute;
+width: 185px;
+height: 35px;
+left: 628px;
+top: 810px;
+
+background: linear-gradient(180deg, #F6B50C 0%, #FFB800 100%);
+box-shadow: 0px 0px 8px rgba(255, 212, 0, 0.4);
+border-radius: 4px;
+
+
+/* Search */
+
+position: absolute;
+width: 51px;
+height: 19px;
+left: 695px;
+top: 818px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+
+color: #212027;
+
+
+
+/* Group 71 */
+
+position: absolute;
+width: 251px;
+height: 161px;
+left: 1057px;
+top: 548px;
+
+
+
+/* Rectangle 14 */
+
+position: absolute;
+width: 251px;
+height: 161px;
+left: 1057px;
+top: 548px;
+
+background: linear-gradient(0deg, #17161A, #17161A), url(.jpg);
+background-blend-mode: multiply, normal;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 2px;
+
+
+/* SELECT ALL */
+
+position: absolute;
+width: 65px;
+height: 14px;
+left: 1072px;
+top: 563px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+
+color: #F8B609;
+
+
+
+/* DESELECT ALL */
+
+position: absolute;
+width: 80px;
+height: 14px;
+left: 1213px;
+top: 563px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+
+color: #F8B609;
+
+
+
+/* CLOSE */
+
+position: absolute;
+width: 37px;
+height: 14px;
+left: 1256px;
+top: 680px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+
+color: #F8B609;
+
+
+
+/* Group 69 */
+
+position: absolute;
+width: 218px;
+height: 30px;
+left: 1072px;
+top: 590px;
+
+
+
+/* Group 67 */
+
+position: absolute;
+width: 123px;
+height: 20px;
+left: 1072px;
+top: 595px;
+
+
+
+/* Ironwood Tree */
+
+position: absolute;
+width: 93px;
+height: 17px;
+left: 1102px;
+top: 596px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #EEEFED;
+
+
+
+/* Rectangle 15 */
+
+position: absolute;
+width: 20px;
+height: 20px;
+left: 1072px;
+top: 595px;
+
+background: #F8B609;
+border: 2px solid #F8B609;
+box-sizing: border-box;
+border-radius: 4px;
+
+
+/* bi:check */
+
+position: absolute;
+width: 16px;
+height: 16px;
+left: 1074px;
+top: 597px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 25.53%;
+right: 23.52%;
+top: 29.77%;
+bottom: 29.69%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 25.53%;
+right: 23.52%;
+top: 29.77%;
+bottom: 29.69%;
+
+background: #151418;
+
+
+/* image 12 */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 1260px;
+top: 590px;
+
+background: url(.png);
+
+
+/* Group 70 */
+
+position: absolute;
+width: 218px;
+height: 30px;
+left: 1072px;
+top: 630px;
+
+
+
+/* Group 68 */
+
+position: absolute;
+width: 132px;
+height: 20px;
+left: 1072px;
+top: 635px;
+
+
+
+/* Wyrdwood Tree */
+
+position: absolute;
+width: 102px;
+height: 17px;
+left: 1102px;
+top: 636px;
+
+font-family: Amazon Ember;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #EEEFED;
+
+
+
+/* Rectangle 15 */
+
+position: absolute;
+width: 20px;
+height: 20px;
+left: 1072px;
+top: 635px;
+
+background: #2D2D2D;
+border: 2px solid #EEEFED;
+box-sizing: border-box;
+border-radius: 4px;
+
+
+/* image 13 */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 1260px;
+top: 630px;
+
+background: url(.png);

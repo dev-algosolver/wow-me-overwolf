@@ -212,6 +212,10 @@ i.icon.icon-personal-journal {
   background-image: url(/img/desktop-window/personal-journal.svg);
 }
 
+i.icon.icon-map {
+  background-image: url(/img/desktop-window/map.svg);
+}
+
 i.icon.icon-gear-optimizer {
   background-image: url(/img/desktop-window/gear-optimizer.svg);
 }
@@ -274,6 +278,7 @@ div.sub-panel > div {
 main.home div.home-content,
 main.talent-picker div.talent-picker-content,
 main.personal-journal div.personal-journal-content,
+main.map div.map-content,
 main.settings div.settings-content {
   display: block;
 }
@@ -1199,6 +1204,42 @@ div.personal-journal {
   background: url(../img/desktop-window/personal-journal-right-bg.png);
   background-repeat: no-repeat;
 } */
+
+/* Map */
+#map-image {
+  /* position: absolute; */
+  scale: 2.5;
+  /* width: 600px;
+  height: 500px; */
+  left: 130px;
+  top: 120px;
+}
+
+#sliderOpacity {
+  width: 73px;
+  height: 18px;
+  font-family: "IM FELL DW Pica";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  text-align: center;
+  text-shadow: 0px -1px 8px rgba(255, 212, 0, 0.4);
+}
+
+#sliderZoom {
+  width: 62px;
+  height: 18px;
+  font-family: IM FELL DW Pica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  text-align: center;
+  text-shadow: 0px -1px 8px rgba(255, 212, 0, 0.4);
+}
 
 #raid_dungeon-switch__container a {
   color: #d5d5d5;
