@@ -90,6 +90,12 @@
               <i class="icon icon-personal-journal"></i>Personal Journal
             </div>
           </li>
+          <li class="menu-item" id="btn-map" page-type="map">
+            <div class="menu-item-normal">
+              <i class="icon icon-map"></i>
+            </div>
+            <div class="menu-item-hover"><i class="icon icon-map"></i>Map</div>
+          </li>
           <li
             class="menu-item in-progress"
             id="btn-gear-optimizer"
@@ -552,6 +558,14 @@
               </div>
             </div>
           </div>
+          <div class="map-content">
+            <h1>Maps</h1>
+            <div class="map-panel">
+              <div>
+                <img id="map-image" src="/img/desktop-window/map.png" alt="" />
+              </div>
+            </div>
+          </div>
           <div class="settings-content">
             <h1>Settings</h1>
             <div class="settings-panel">
@@ -641,6 +655,36 @@
                 <li>Weekly meta insights.</li>
                 <li>Call outs with selection logic.</li>
               </ul>
+            </div>
+            <div class="map-content">
+              <!-- <p>Slider</p> -->
+              <form>
+                <label>Opacity: </label>
+                <p>
+                  <input
+                    type="range"
+                    id="sliderOpacity"
+                    min="0"
+                    max="100"
+                    value="100"
+                    class="sliders"
+                  />
+                  <span id="numOpacity">100</span>%
+                </p>
+
+                <label>Zoom: </label>
+                <p>
+                  <input
+                    type="range"
+                    id="sliderZoom"
+                    min="0"
+                    max="200"
+                    value="100"
+                    class="sliders"
+                  />
+                  <span id="numZoom">100</span>%
+                </p>
+              </form>
             </div>
           </div>
           <!-- <div class="panel remove-ads-panel">
@@ -933,6 +977,30 @@
         } else {
           richtextContainer2.classList.add("active");
         }
+      });
+    </script>
+
+    <script>
+      const sliderOpacity = document.querySelector("#sliderOpacity");
+      const img = document.querySelector("#map-image");
+      let val = document.getElementById("numOpacity");
+
+      sliderOpacity.addEventListener("input", function () {
+        val.innerHTML = sliderOpacity.value;
+        img.style.opacity = sliderOpacity.value / 100;
+        // I divide by 100 because "opacity" takes a value between 0 and 1.
+      });
+    </script>
+
+    <script>
+      const sliderZoom = document.querySelector("#sliderZoom");
+      const img = document.querySelector("#map-image");
+      let val = document.getElementById("numZoom");
+
+      sliderZoom.addEventListener("input", function () {
+        val.innerHTML = sliderZoom.value;
+        img.style.transform = `scale${sliderZoom.value / 100}`;
+        // I divide by 100 because "opacity" takes a value between 0 and 1.
       });
     </script>
   </body>
