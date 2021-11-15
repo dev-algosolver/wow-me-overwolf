@@ -1,0 +1,114 @@
+.character-panel .select-box {
+	position: relative;
+	display: block;
+	width: 300px;
+	margin: 0 auto;
+	font-size: 16px;
+	height: 40px;
+	padding: 7px 10px 7px 15px;
+	color: #e7e7e7;
+	background: #16294B;
+  border: 1px solid #5A8FEA;
+	outline: none;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+}
+.character-panel .select-box__current {
+	position: relative;
+	box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	outline: none;
+}
+.character-panel .select-box__current.focussed + .select-box__list {
+	opacity: 1;
+	animation-name: none;
+}
+.character-panel .select-box__current.focussed + .select-box__list .select-box__option {
+	cursor: pointer;
+}
+.character-panel .select-box__icon {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	width: 20px;
+}
+.character-panel .select-box__value {
+	display: flex;
+}
+.character-panel .select-box__input {
+	display: none;
+}
+.character-panel .select-box__input:checked + .select-box__input-text {
+	display: block;
+	height: initial;
+	overflow: hidden;
+}
+.character-panel .select-box__input-text {
+	display: none;
+	width: 100%;
+	margin: 0;
+	text-transform: capitalize;
+}
+.character-panel .select-box__list {
+	position: absolute;
+	margin: 10px 0;
+	left: 0;
+	right: 0;
+	padding: 0;
+	list-style: none;
+	opacity: 0;
+	animation-name: HideList1;
+	animation-duration: 0.5s;
+	animation-delay: 0.5s;
+	animation-fill-mode: forwards;
+	animation-timing-function: step-start;
+	z-index: 9999;
+	box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+	border: 1px solid #5A8FEA;
+	max-height: 150px;
+	overflow: auto;
+}
+.character-panel .select-box__list::-webkit-scrollbar {
+	width: 15px;
+	background: #16294B;
+  border-image: none;
+}
+.character-panel .select-box__list::-webkit-scrollbar-thumb {
+	border-radius: 8px;
+  box-shadow: inset 0 0 10px 10px #E7E7E7;
+  border: solid 3px transparent;
+  border-image: none;
+  background: transparent;
+}
+.character-panel .select-box__list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px 10px transparent;
+  border: solid 3px transparent;
+  border-image: none;
+}
+.character-panel .select-box__list::-webkit-scrollbar-button:increment {
+	background: #16294B;
+}
+.character-panel .select-box__list::-webkit-scrollbar-button:decrement {
+	background: #16294B;
+}
+.character-panel .select-box__option {
+	display: block;
+	padding: 5px 15px;
+	background: #16294B;
+	color: #e7e7e7;
+	text-transform: capitalize;
+}
+.character-panel .select-box__option:hover, .select-box__option:focus {
+	color: #ffd100;
+	background: #16294B;
+}
+
+@keyframes HideList1 {
+	from {
+		transform: scaleY(1);
+	}
+	to {
+		transform: scaleY(0);
+	}
+}
