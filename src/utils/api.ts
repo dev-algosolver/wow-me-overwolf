@@ -133,9 +133,10 @@ export const getCharacters = async () => {
   return null;
 };
 
-export const getJournals = async () => {
+export const getJournals = async (battleId) => {
   try {
-    const res = await api.get("/journals");
+    const res = await api.get(`/journals?battleId=${battleId}`);
+    // console.log(res);
     if (res.data.success) {
       return res.data;
     } else {

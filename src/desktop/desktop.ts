@@ -33,6 +33,8 @@ class Desktop extends AppWindow {
   private static _instance: Desktop;
   private isLoggedIn: boolean = false;
   private battleTag: string;
+  private battleId: string;
+  private battleCred: {};
   private characters: [];
   private region: string;
   private characterInfo: CharacterInfo;
@@ -46,6 +48,7 @@ class Desktop extends AppWindow {
 
     if (token && parseInt(expiresIn) > Date.now()) {
       this.battleTag = localStorage.getItem("battleTag");
+      this.battleId = localStorage.getItem("battleId");
       this.region = localStorage.getItem("region");
 
       setAuthToken(token);
@@ -54,6 +57,7 @@ class Desktop extends AppWindow {
       localStorage.removeItem("token");
       localStorage.removeItem("expiresIn");
       localStorage.removeItem("battleTag");
+      localStorage.removeItem("battleId");
       localStorage.removeItem("region");
     }
 
@@ -72,6 +76,14 @@ class Desktop extends AppWindow {
 
   public setBattleTag(battleTag) {
     this.battleTag = battleTag;
+  }
+
+  public setBattleId(battleId) {
+    this.battleId = battleId;
+  }
+
+  public setBattleCred(battleCred) {
+    this.battleCred = battleCred;
   }
 
   public setCharacters(characters) {
@@ -102,6 +114,7 @@ class Desktop extends AppWindow {
           this.isLoggedIn = false;
           localStorage.removeItem("expiresIn");
           localStorage.removeItem("battleTag");
+          localStorage.removeItem("battleId");
           localStorage.removeItem("token");
           localStorage.removeItem("region");
 
@@ -109,6 +122,17 @@ class Desktop extends AppWindow {
 
           this.drawUserInfo();
           this.drawSubPanel();
+          this.clearJournalUI();
+          // this.getUserJournals();
+
+          const pjBtnLogin = document.getElementById("btn-personal-journal-onLoggedin");
+          pjBtnLogin.classList.remove("enabled");
+
+          const pjBtnLogout = document.getElementById("btn-personal-journal");
+          pjBtnLogout.classList.remove("disabled");
+
+          const homeButton = document.getElementById("btn-main");
+          homeButton.click();
 
           return;
         }
@@ -296,15 +320,20 @@ class Desktop extends AppWindow {
       const desktop = Desktop.instance();
 
       desktop.setBattleTag(userInfo.battleTag);
+      desktop.setBattleId(userInfo.battleId);
+      desktop.setBattleCred(userInfo.battleCred);
       desktop.setCharacters(userInfo.characters);
       desktop.setRegion(userInfo.region);
 
       localStorage.setItem("token", token);
       localStorage.setItem("expiresIn", expiresIn.toString());
       localStorage.setItem("battleTag", userInfo.battleTag);
+      localStorage.setItem("battleId", userInfo.battleId);
+      localStorage.setItem("battleCred", userInfo.battleCred);
       localStorage.setItem("region", userInfo.region);
 
       desktop.onLoggedIn();
+      desktop.getUserJournals();
     } catch (e) {
       console.log(e);
     }
@@ -328,10 +357,9 @@ class Desktop extends AppWindow {
   }
 
   private async getUserJournals() {
-    let response = await getJournals();
+    let response = localStorage.getItem("battleId") ? await getJournals(this.battleId.toString()) : null;
     const journalList = document.getElementById("journal-tabs");
 
-    // let count = 0;
     for (let i = 0; i < response?.data.length; i++) {
       console.log("loop started", i);
       const btn = document.createElement("div");
@@ -372,8 +400,9 @@ class Desktop extends AppWindow {
       deleteSpan.addEventListener("click", (e) => {
         e.stopPropagation();
         deleteJournal(response.data[i]._id);
-        const oldJournalList = document.getElementById('journal-tabs');
-        oldJournalList.innerHTML = '';
+        this.clearJournalUI();
+        // const oldJournalList = document.getElementById('journal-tabs');
+        // oldJournalList.innerHTML = '';
         response.data = [];
         this.getUserJournals();
 
@@ -381,6 +410,8 @@ class Desktop extends AppWindow {
           "journal-item-container"
         );
         journalContainer.innerHTML = "";
+
+
       });
 
       btn.addEventListener("click", function (e) {
@@ -481,11 +512,15 @@ class Desktop extends AppWindow {
       const cb = document.getElementById("accept") as HTMLInputElement;
       // const check = cb.checked
       const data = {
-        battleId: "a232df3dfafa213",
+        battleId: this.battleId.toString(),
         name: inputVal,
         // template: check,
       }
       console.log(data)
+
+      // console.log('this.battleId: ', this.battleId, typeof (this.battleId));
+      // console.log('From Local Storage: ', localStorage.getItem("battleId"), typeof (localStorage.getItem("battleId")));
+
       const response = await storeJournals(data);
       if (response.success) {
         const journalList = document.getElementById("journal-tabs");
@@ -514,7 +549,7 @@ class Desktop extends AppWindow {
       let content = document.querySelector(".edit-journel");
       const contentID = content.getAttribute("data-id")
       const data = {
-        battleId: "a232df3dfafa213",
+        battleId: this.battleId.toString(),
         name: inputVal,
         // template: check,
       }
@@ -602,8 +637,20 @@ class Desktop extends AppWindow {
     const elBtnLogout = document.getElementById("btn-logout");
     elBtnLogout.classList.add("enabled");
 
+    const pjBtnLogin = document.getElementById("btn-personal-journal-onLoggedin");
+    pjBtnLogin.classList.add("enabled");
+
+    const pjBtnLogout = document.getElementById("btn-personal-journal");
+    pjBtnLogout.classList.add("disabled");
+
     this.drawUserInfo();
     this.drawSubPanel();
+    // this.getUserJournals();
+  }
+
+  public clearJournalUI() {
+    const oldJournalList = document.getElementById('journal-tabs');
+    oldJournalList.innerHTML = '';
   }
 
   private drawUserInfo() {

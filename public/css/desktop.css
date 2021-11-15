@@ -196,8 +196,18 @@ main .desktop-menu {
   margin-top: 130px;
   display: none;
 }
-.desktop-menu ul li#btn-logout.enabled {
+
+.desktop-menu ul li#btn-personal-journal-onLoggedin {
+  display: none;
+}
+
+.desktop-menu ul li#btn-logout.enabled,
+.desktop-menu ul li#btn-personal-journal-onLoggedin.enabled {
   display: list-item;
+}
+
+.desktop-menu ul li#btn-personal-journal.disabled {
+  display: none;
 }
 
 i.icon.icon-home {

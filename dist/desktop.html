@@ -80,7 +80,7 @@
           </li>
           <li
             class="menu-item"
-            id="btn-personal-journal"
+            id="btn-personal-journal-onLoggedin"
             page-type="personal-journal"
           >
             <div class="menu-item-normal">
@@ -90,6 +90,23 @@
               <i class="icon icon-personal-journal"></i>Personal Journal
             </div>
           </li>
+
+          <!-- Without Login -->
+          <li
+            class="menu-item in-progress"
+            id="btn-personal-journal"
+            page-type="personal-journal"
+          >
+            <div class="menu-item-normal">
+              <i class="icon icon-personal-journal"></i>
+            </div>
+            <div class="menu-item-hover">
+              <i class="icon icon-personal-journal"></i>Please Login <br />
+              To See Your <br />
+              Personal Journal
+            </div>
+          </li>
+
           <li
             class="menu-item in-progress"
             id="btn-gear-optimizer"
@@ -601,7 +618,7 @@
             <div id="loading-overlay">
               <img src="/img/desktop-window/loading.gif" alt="" />
             </div>
-            <div class="home-content">
+            <div class="home-content personal-journal-content">
               <div class="login-panel">
                 <img src="/img/desktop-window/blizzard-logo.png" alt="" />
                 <button id="btn-login">Login with Battle.net</button>
