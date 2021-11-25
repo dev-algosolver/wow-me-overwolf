@@ -1,18 +1,17 @@
-import { AppWindow } from "../AppWindow";
 import { OWHotkeys } from "@overwolf/overwolf-api-ts";
+import { AppWindow } from "../AppWindow";
 import { hotkeys, windowNames, wowClassId } from "../consts";
-
 import {
-  setAuthToken,
-  getToken,
-  getCharacters,
-  getJournals,
-  storeJournals,
-  updateJournals,
-  storeJournalContent,
+  deleteJournal,
   deleteJournalContent,
   editJournalContent,
-  deleteJournal
+  getCharacters,
+  getJournals,
+  getToken,
+  setAuthToken,
+  storeJournalContent,
+  storeJournals,
+  updateJournals,
 } from "../utils/api";
 import CharacterInfo from "../utils/characterInfo";
 import TalentPicker from "../utils/talentPicker";
@@ -103,6 +102,15 @@ class Desktop extends AppWindow {
       const authorizeUrl = `${AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&scope=${scopesString}&redirect_uri=${redirectUriString}&response_type=code`;
       overwolf.utils.openUrlInDefaultBrowser(authorizeUrl);
     });
+    // Changed here as clients given dist file [start]
+    const loginButton2 = document.getElementById("btn-personal-journal");
+    loginButton2.addEventListener("click", (e) => {
+      const scopesString = encodeURIComponent(scope.join(" "));
+      const redirectUriString = encodeURIComponent(redirectUri);
+      const authorizeUrl = `${AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&scope=${scopesString}&redirect_uri=${redirectUriString}&response_type=code`;
+      overwolf.utils.openUrlInDefaultBrowser(authorizeUrl);
+    });
+    // Changed here as clients given dist file [end]
 
     // Main Menu
     const menuItems = document.getElementsByClassName("menu-item");
@@ -125,7 +133,9 @@ class Desktop extends AppWindow {
           this.clearJournalUI();
           // this.getUserJournals();
 
-          const pjBtnLogin = document.getElementById("btn-personal-journal-onLoggedin");
+          const pjBtnLogin = document.getElementById(
+            "btn-personal-journal-onLoggedin"
+          );
           pjBtnLogin.classList.remove("enabled");
 
           const pjBtnLogout = document.getElementById("btn-personal-journal");
@@ -145,6 +155,45 @@ class Desktop extends AppWindow {
         elMain.className = elem.getAttribute("page-type");
       });
     });
+
+    // Changed here as clients given dist file [start]
+    const onlinestatus = document.getElementsByClassName("online-status");
+    Array.from(onlinestatus).forEach((elem) => {
+      elem.addEventListener("click", (e) => {
+        if (elem.classList.contains("in-progress")) {
+          return;
+        } else if (elem.id === "top-logout-button") {
+          this.isLoggedIn = false;
+          localStorage.removeItem("expiresIn");
+          localStorage.removeItem("battleTag");
+          localStorage.removeItem("battleId");
+          localStorage.removeItem("token");
+          localStorage.removeItem("region");
+          elem.classList.remove("enabled");
+          this.drawUserInfo();
+          this.drawSubPanel();
+          this.clearJournalUI();
+          const pjBtnLogin = document.getElementById(
+            "btn-personal-journal-onLoggedin"
+          );
+          pjBtnLogin.classList.remove("enabled");
+          const pjBtnLogout = document.getElementById("btn-personal-journal");
+          pjBtnLogout.classList.remove("disabled");
+          const homeButton = document.getElementById("btn-main");
+          const pjBtnLogout2 = document.getElementById("btn-logout");
+          pjBtnLogout2.classList.remove("enabled");
+          homeButton.click();
+          return;
+        }
+        Array.from(onlinestatus).forEach((elem1) => {
+          elem1.classList.remove("active");
+        });
+        elem.classList.add("active");
+        const elMain = document.getElementById("main");
+        elMain.className = elem.getAttribute("page-type");
+      });
+    });
+    // Changed here as clients given dist file [end]
 
     // Discord
     const discordButton = document.getElementById("discordButton");
@@ -357,7 +406,9 @@ class Desktop extends AppWindow {
   }
 
   private async getUserJournals() {
-    let response = localStorage.getItem("battleId") ? await getJournals(this.battleId.toString()) : null;
+    let response = localStorage.getItem("battleId")
+      ? await getJournals(this.battleId.toString())
+      : null;
     const journalList = document.getElementById("journal-tabs");
 
     for (let i = 0; i < response?.data.length; i++) {
@@ -367,18 +418,17 @@ class Desktop extends AppWindow {
       btn.setAttribute("data-id", response.data[i]._id);
       btn.classList.add("tab-link");
       let deleteSpan = document.createElement("span");
-      deleteSpan.classList.add("material-icons")
-      deleteSpan.classList.add("textSpan2")
-      deleteSpan.innerHTML = "delete"
+      deleteSpan.classList.add("material-icons");
+      deleteSpan.classList.add("textSpan2");
+      deleteSpan.innerHTML = "delete";
       journalList.appendChild(btn);
-      btn.appendChild(deleteSpan)
-
+      btn.appendChild(deleteSpan);
 
       var editJournel = document.createElement("span");
-      editJournel.classList.add("material-icons")
-      editJournel.classList.add("editSpan2")
-      editJournel.innerHTML = "edit"
-      btn.appendChild(editJournel)
+      editJournel.classList.add("material-icons");
+      editJournel.classList.add("editSpan2");
+      editJournel.innerHTML = "edit";
+      btn.appendChild(editJournel);
 
       editJournel.addEventListener("click", (e) => {
         const target = e.target as Element;
@@ -391,11 +441,12 @@ class Desktop extends AppWindow {
         const editModalOpenButton = document.getElementById("myBtnEdit");
         editModalOpenButton.click();
         console.log("clicked", response.data[i].name);
-        (document.getElementById("myInput2") as HTMLInputElement).value = response.data[i].name;
-        console.log("object", response.data[i])
+        (document.getElementById("myInput2") as HTMLInputElement).value =
+          response.data[i].name;
+        console.log("object", response.data[i]);
         const cb = document.getElementById("accept") as HTMLInputElement;
         cb.value = response.data[i].template;
-      })
+      });
 
       deleteSpan.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -410,8 +461,6 @@ class Desktop extends AppWindow {
           "journal-item-container"
         );
         journalContainer.innerHTML = "";
-
-
       });
 
       btn.addEventListener("click", function (e) {
@@ -437,18 +486,17 @@ class Desktop extends AppWindow {
           const journalBtn = document.createElement("div");
           journalBtn.innerHTML = element.title;
           var textSpan = document.createElement("span");
-          textSpan.classList.add("material-icons")
-          textSpan.classList.add("textSpan")
-          textSpan.innerHTML = "delete"
-          journalBtn.appendChild(textSpan)
+          textSpan.classList.add("material-icons");
+          textSpan.classList.add("textSpan");
+          textSpan.innerHTML = "delete";
+          journalBtn.appendChild(textSpan);
           const journalDesc = document.createElement("p");
 
-
           var editSpan = document.createElement("span");
-          editSpan.classList.add("material-icons")
-          editSpan.classList.add("editSpan")
-          editSpan.innerHTML = "edit"
-          journalBtn.appendChild(editSpan)
+          editSpan.classList.add("material-icons");
+          editSpan.classList.add("editSpan");
+          editSpan.innerHTML = "edit";
+          journalBtn.appendChild(editSpan);
 
           journalBtn.classList.add("accordion");
           if (journalDesc.classList.contains("active")) {
@@ -477,22 +525,26 @@ class Desktop extends AppWindow {
               elems.classList.remove("active-content");
             }
             target.parentElement.parentElement.classList.add("active-content");
-            const modalOpenButton = document.getElementById("editContentButton");
+            const modalOpenButton =
+              document.getElementById("editContentButton");
             modalOpenButton.click();
-            (document.getElementById("editContentTitle") as HTMLInputElement).value = element.title;
-            document.querySelector(".editEditor").innerHTML = element.description;
-          })
+            (
+              document.getElementById("editContentTitle") as HTMLInputElement
+            ).value = element.title;
+            document.querySelector(".editEditor").innerHTML =
+              element.description;
+          });
 
           textSpan.addEventListener("click", () => {
             let elems = document.querySelector(".active-tab");
-            let dataID = elems.getAttribute('data-id')
+            let dataID = elems.getAttribute("data-id");
             deleteJournalContent(dataID, element._id);
             let item = document.querySelector(`[data-id="${element._id}"]`);
             item.remove();
             let content = response.data[i].data;
             content = content.filter((con) => con._id != element._id);
             response.data[i].data = content;
-          })
+          });
           journalItem.appendChild(journalBtn);
           if (element.description) {
             journalItem.appendChild(journalDesc);
@@ -504,19 +556,20 @@ class Desktop extends AppWindow {
   }
 
   private async storeUserJournals() {
-    const saveButton = document.getElementById("saveButton")
+    const saveButton = document.getElementById("saveButton");
 
     saveButton.addEventListener("click", async (e) => {
       e.preventDefault();
-      let inputVal = (document.getElementById("myInput") as HTMLInputElement).value;
+      let inputVal = (document.getElementById("myInput") as HTMLInputElement)
+        .value;
       const cb = document.getElementById("accept") as HTMLInputElement;
       // const check = cb.checked
       const data = {
         battleId: this.battleId.toString(),
         name: inputVal,
         // template: check,
-      }
-      console.log(data)
+      };
+      console.log(data);
 
       // console.log('this.battleId: ', this.battleId, typeof (this.battleId));
       // console.log('From Local Storage: ', localStorage.getItem("battleId"), typeof (localStorage.getItem("battleId")));
@@ -524,111 +577,115 @@ class Desktop extends AppWindow {
       const response = await storeJournals(data);
       if (response.success) {
         const journalList = document.getElementById("journal-tabs");
-        journalList.innerHTML = '';
+        journalList.innerHTML = "";
         await this.getUserJournals();
         let bttnn2 = document.querySelector(`[data-id="${response.data._id}"]`);
-        if ((bttnn2 as HTMLElement)) {
-          (bttnn2 as HTMLElement).click()
+        if (bttnn2 as HTMLElement) {
+          (bttnn2 as HTMLElement).click();
         }
         (document.getElementById("myInput") as HTMLInputElement).value = "";
-        (document.querySelector(".close") as HTMLElement).click()
+        (document.querySelector(".close") as HTMLElement).click();
       }
-    })
+    });
   }
 
-
   private async updateUserJournals() {
-    const saveButtonEdit = document.getElementById("myModal2Save")
+    const saveButtonEdit = document.getElementById("myModal2Save");
 
     saveButtonEdit.addEventListener("click", async (e) => {
       // console.log("from saveButton");
       e.preventDefault();
-      let inputVal = (document.getElementById("myInput2") as HTMLInputElement).value;
+      let inputVal = (document.getElementById("myInput2") as HTMLInputElement)
+        .value;
       const cb = document.getElementById("accept") as HTMLInputElement;
       // const check = cb.checked
       let content = document.querySelector(".edit-journel");
-      const contentID = content.getAttribute("data-id")
+      const contentID = content.getAttribute("data-id");
       const data = {
         battleId: this.battleId.toString(),
         name: inputVal,
         // template: check,
-      }
+      };
       const response = await updateJournals(contentID, data);
       if (response.success) {
         const journalList = document.getElementById("journal-tabs");
-        journalList.innerHTML = '';
+        journalList.innerHTML = "";
         await this.getUserJournals();
         let bttnn2 = document.querySelector(`[data-id="${response.data._id}"]`);
-        if ((bttnn2 as HTMLElement)) {
-          (bttnn2 as HTMLElement).click()
+        if (bttnn2 as HTMLElement) {
+          (bttnn2 as HTMLElement).click();
         }
         (document.getElementById("myInput2") as HTMLInputElement).value = "";
-        (document.querySelector(".myModal2Close") as HTMLElement).click()
+        (document.querySelector(".myModal2Close") as HTMLElement).click();
       }
-    })
+    });
   }
 
-
   private async storeUserJournalContent() {
-    const saveContentButton = document.getElementById("contentsaveButton")
+    const saveContentButton = document.getElementById("contentsaveButton");
 
     saveContentButton.addEventListener("click", async (e) => {
       e.preventDefault();
       let elems = document.querySelector(".active-tab");
-      const id = elems.getAttribute("data-id")
-      let contentTitle = (document.getElementById("contentTitle") as HTMLInputElement).value;
+      const id = elems.getAttribute("data-id");
+      let contentTitle = (
+        document.getElementById("contentTitle") as HTMLInputElement
+      ).value;
       const htmlFile = document.querySelector(".editor").innerHTML;
       let data = {
         title: contentTitle,
-        description: htmlFile
-      }
+        description: htmlFile,
+      };
       const response = await storeJournalContent(id, data);
       if (response.success) {
         const journalList = document.getElementById("journal-tabs");
-        journalList.innerHTML = '';
-        await this.getUserJournals()
+        journalList.innerHTML = "";
+        await this.getUserJournals();
         let bttnn = document.querySelector(`[data-id="${id}"]`);
-        if ((bttnn as HTMLElement)) {
-          (bttnn as HTMLElement).click()
+        if (bttnn as HTMLElement) {
+          (bttnn as HTMLElement).click();
         }
-        (document.getElementById("contentTitle") as HTMLInputElement).value = ""
-        document.querySelector(".editor").innerHTML = ""
+        (document.getElementById("contentTitle") as HTMLInputElement).value =
+          "";
+        document.querySelector(".editor").innerHTML = "";
       }
-      (document.querySelector(".ContentModalClose") as HTMLElement).click()
-    })
+      (document.querySelector(".ContentModalClose") as HTMLElement).click();
+    });
   }
 
-
-
   private async updateUserJournalContent() {
-    const saveContentButton2 = document.getElementById("contentsaveButton2")
+    const saveContentButton2 = document.getElementById("contentsaveButton2");
 
     saveContentButton2.addEventListener("click", async (e) => {
       e.preventDefault();
       let elems = document.querySelector(".active-tab");
-      const id = elems.getAttribute("data-id")
+      const id = elems.getAttribute("data-id");
       let content = document.querySelector(".active-content");
-      const contentID = content.getAttribute("data-id")
-      let contentTitle = (document.getElementById("editContentTitle") as HTMLInputElement).value;
+      const contentID = content.getAttribute("data-id");
+      let contentTitle = (
+        document.getElementById("editContentTitle") as HTMLInputElement
+      ).value;
       const htmlFile = document.querySelector(".editEditor").innerHTML;
       let data = {
         title: contentTitle,
-        description: htmlFile
-      }
+        description: htmlFile,
+      };
       const response = await editJournalContent(id, contentID, data);
       if (response.success) {
         const journalList = document.getElementById("journal-tabs");
-        journalList.innerHTML = '';
-        await this.getUserJournals()
+        journalList.innerHTML = "";
+        await this.getUserJournals();
         let bttnn = document.querySelector(`[data-id="${id}"]`);
-        if ((bttnn as HTMLElement)) {
-          (bttnn as HTMLElement).click()
+        if (bttnn as HTMLElement) {
+          (bttnn as HTMLElement).click();
         }
-        (document.getElementById("editContentTitle") as HTMLInputElement).value = ""
-        document.querySelector(".editEditor").innerHTML = ""
+        (
+          document.getElementById("editContentTitle") as HTMLInputElement
+        ).value = "";
+        document.querySelector(".editEditor").innerHTML = "";
       }
-      (document.querySelector(".editContentModalClose") as HTMLElement).click()
-    })
+      (document.querySelector(".editContentModalClose") as HTMLElement).click();
+    });
   }
 
   public onLoggedIn() {
@@ -637,7 +694,9 @@ class Desktop extends AppWindow {
     const elBtnLogout = document.getElementById("btn-logout");
     elBtnLogout.classList.add("enabled");
 
-    const pjBtnLogin = document.getElementById("btn-personal-journal-onLoggedin");
+    const pjBtnLogin = document.getElementById(
+      "btn-personal-journal-onLoggedin"
+    );
     pjBtnLogin.classList.add("enabled");
 
     const pjBtnLogout = document.getElementById("btn-personal-journal");
@@ -649,8 +708,8 @@ class Desktop extends AppWindow {
   }
 
   public clearJournalUI() {
-    const oldJournalList = document.getElementById('journal-tabs');
-    oldJournalList.innerHTML = '';
+    const oldJournalList = document.getElementById("journal-tabs");
+    oldJournalList.innerHTML = "";
   }
 
   private drawUserInfo() {

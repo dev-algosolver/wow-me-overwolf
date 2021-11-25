@@ -152,11 +152,7 @@ main .desktop-menu {
 .desktop-menu ul li.active .menu-item-normal,
 .desktop-menu ul li.active .menu-item-hover,
 .desktop-menu ul li:hover .menu-item-hover {
-  background: linear-gradient(
-    270.44deg,
-    #a5a020 27.97%,
-    rgba(165, 161, 71, 0) 99.62%
-  );
+  background: linear-gradient(270.44deg, #a5a020 27.97%, rgba(165, 161, 71, 0) 99.62%);
   border: 1px solid #fffb7999;
   border-left: none;
 }
@@ -591,14 +587,7 @@ div.page-left h1 {
 
 div.talent-picker .talent-table {
   margin-bottom: -5px;
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% calc(100% - 3px),
-    calc(100% - 3px) 100%,
-    5px 100%,
-    0 calc(100% - 5px)
-  );
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 5px 100%, 0 calc(100% - 5px));
 }
 
 div.talent-picker * {
@@ -774,7 +763,7 @@ div.personal-journal {
 }
 
 .modal .modal-content-add {
-  margin-left: 180px;
+  margin-left: 85px;
   padding: 20px 40px;
   width: 700px;
   background-image: url("../img/desktop-window/content-modal.png");
@@ -872,8 +861,7 @@ div.personal-journal {
   margin-left: 10px;
   margin-bottom: 5px;
   color: #f8ae62;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url(../img/desktop-window/save.png);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../img/desktop-window/save.png);
   background-position: center;
   background-size: cover;
   border: 2.14427px solid #462303;
@@ -1235,8 +1223,7 @@ div.personal-journal {
   width: 28px;
   height: 28px;
   display: inline-block;
-  background: url(../img/in-game-window/switch/switch-thumb.png) no-repeat
-    center;
+  background: url(../img/in-game-window/switch/switch-thumb.png) no-repeat center;
   top: -1px;
   left: -2px;
   transition: 0.2s;
@@ -1277,13 +1264,11 @@ div.talent-picker input[type="checkbox"] + label::before {
   vertical-align: text-top;
   width: 15px;
   height: 15px;
-  background: url(../img/in-game-window/button/checkbox-background.png)
-    no-repeat center;
+  background: url(../img/in-game-window/button/checkbox-background.png) no-repeat center;
 }
 
 div.talent-picker input[type="checkbox"]:checked + label::before {
-  background: url(../img/in-game-window/button/checkbox-check.png) no-repeat
-    center;
+  background: url(../img/in-game-window/button/checkbox-check.png) no-repeat center;
 }
 
 div.talent-picker div.talent-panel-header {
