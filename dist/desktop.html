@@ -30,8 +30,10 @@
           <img src="/img/desktop-window/avatar.png" alt="" />
           <div>
             <div id="battle-tag">ShinyHero#2174189</div>
-            <div class="online-status">
-              Online <img src="/img/desktop-window/online-check.svg" alt="" />
+            <!-- Changed here as clients given dist file [start] -->
+            <div class="online-status" id="top-logout-button">
+              Logout <img src="/img/desktop-window/online-check.svg" alt="" />
+              <!-- Changed here as clients given dist file [end] -->
             </div>
           </div>
         </div>
@@ -624,20 +626,23 @@
                 <button id="btn-login">Login with Battle.net</button>
               </div>
               <div class="character-panel">
+                <!-- Changed here as clients given dist file [start] -->
                 <div id="character-select-box__container"></div>
+                &nbsp &nbsp &nbsp Your user's total data as it apears in WoW:
                 <div class="character-info">
-                  <div id="total_number_deaths">Total Number Deaths: 14</div>
-                  <div id="total_gold_gained">Total Gold Gained: 4587028</div>
-                  <div id="total_gold_lost">Total Gold Lost: 858691</div>
+                  <div id="total_number_deaths">Total Number Deaths:</div>
+                  <div id="total_gold_gained">Total Gold Gained:</div>
+                  <div id="total_gold_lost">Total Gold Lost:</div>
                   <div id="total_item_value_gained">
-                    Total Item Value Gained: 1198739
+                    Total Item Value Gained:
                   </div>
-                  <div id="level_number_deaths">Level Number Deaths: 7</div>
+                  <!-- <div id="level_number_deaths">Level Number Deaths: 7</div>
                   <div id="level_gold_gained">Level Gold Gained: 2867244</div>
                   <div id="level_gold_lost">Level Gold Lost: 646942</div>
                   <div id="level_item_value_gained">
                     Level Item Value Gained: 866885
-                  </div>
+                  </div> -->
+                  <!-- Changed here as clients given dist file [end] -->
                 </div>
               </div>
             </div>

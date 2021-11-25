@@ -3027,7 +3027,7 @@ const convertCharactersToDropdownFormat = (characters) => {
     for (const character of characters) {
         result.push({
             id: character.id,
-            text: `${character.realm_name} - ${character.name}`
+            text: `${character.realm_name} - ${character.name}`,
         });
     }
     return result;
@@ -3042,9 +3042,9 @@ class CharacterInfo {
         el.innerHTML = content;
     }
     initDropDownEventListner(name) {
-        document.getElementsByName(name).forEach(elem => {
+        document.getElementsByName(name).forEach((elem) => {
             elem.addEventListener("click", (e) => {
-                this.selectedCharacterID = e.target.getAttribute('id');
+                this.selectedCharacterID = e.target.getAttribute("id");
                 console.log(this.selectedCharacterID);
                 this.setCharacterInfoPanel();
             });
@@ -3057,24 +3057,21 @@ class CharacterInfo {
                 this.setElementInnerHTML("total_gold_gained", `Total Gold Gained: ${character.total_gold_gained}`);
                 this.setElementInnerHTML("total_gold_lost", `Total Gold Lost: ${character.total_gold_lost}`);
                 this.setElementInnerHTML("total_item_value_gained", `Total Item Value Gained: ${character.total_item_value_gained}`);
-                this.setElementInnerHTML("level_number_deaths", `Level Number Deaths: ${character.level_number_deaths}`);
-                this.setElementInnerHTML("level_gold_gained", `Level Gold Gained: ${character.level_gold_gained}`);
-                this.setElementInnerHTML("level_gold_lost", `Level Gold Lost: ${character.level_gold_lost}`);
-                this.setElementInnerHTML("level_item_value_gained", `Level Item Value Gained: ${character.level_item_value_gained}`);
                 break;
             }
         }
     }
     initDropdown() {
-        const container = document.getElementById('character-select-box__container');
-        container.innerHTML = '';
+        const container = document.getElementById("character-select-box__container");
+        container.innerHTML = "";
         const elDropdown = dropdown_1.createCustomDropDown({
-            variableName: 'character',
-            dropDownList: convertCharactersToDropdownFormat(this.characters)
+            variableName: "character",
+            dropDownList: convertCharactersToDropdownFormat(this.characters),
         });
         container.appendChild(elDropdown);
-        this.initDropDownEventListner('character');
-        this.selectedCharacterID = this.characters.length > 0 ? this.characters[0].id : null;
+        this.initDropDownEventListner("character");
+        this.selectedCharacterID =
+            this.characters.length > 0 ? this.characters[0].id : null;
         this.setCharacterInfoPanel();
     }
 }
@@ -3444,8 +3441,8 @@ var exports = __webpack_exports__;
   \********************************/
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const AppWindow_1 = __webpack_require__(/*! ../AppWindow */ "./src/AppWindow.ts");
 const overwolf_api_ts_1 = __webpack_require__(/*! @overwolf/overwolf-api-ts */ "./node_modules/@overwolf/overwolf-api-ts/dist/index.js");
+const AppWindow_1 = __webpack_require__(/*! ../AppWindow */ "./src/AppWindow.ts");
 const consts_1 = __webpack_require__(/*! ../consts */ "./src/consts.ts");
 const api_1 = __webpack_require__(/*! ../utils/api */ "./src/utils/api.ts");
 const characterInfo_1 = __webpack_require__(/*! ../utils/characterInfo */ "./src/utils/characterInfo.ts");
@@ -3509,6 +3506,13 @@ class Desktop extends AppWindow_1.AppWindow {
             const authorizeUrl = `${AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&scope=${scopesString}&redirect_uri=${redirectUriString}&response_type=code`;
             overwolf.utils.openUrlInDefaultBrowser(authorizeUrl);
         });
+        const loginButton2 = document.getElementById("btn-personal-journal");
+        loginButton2.addEventListener("click", (e) => {
+            const scopesString = encodeURIComponent(scope.join(" "));
+            const redirectUriString = encodeURIComponent(redirectUri);
+            const authorizeUrl = `${AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&scope=${scopesString}&redirect_uri=${redirectUriString}&response_type=code`;
+            overwolf.utils.openUrlInDefaultBrowser(authorizeUrl);
+        });
         const menuItems = document.getElementsByClassName("menu-item");
         Array.from(menuItems).forEach((elem) => {
             elem.addEventListener("click", (e) => {
@@ -3535,6 +3539,41 @@ class Desktop extends AppWindow_1.AppWindow {
                     return;
                 }
                 Array.from(menuItems).forEach((elem1) => {
+                    elem1.classList.remove("active");
+                });
+                elem.classList.add("active");
+                const elMain = document.getElementById("main");
+                elMain.className = elem.getAttribute("page-type");
+            });
+        });
+        const onlinestatus = document.getElementsByClassName("online-status");
+        Array.from(onlinestatus).forEach((elem) => {
+            elem.addEventListener("click", (e) => {
+                if (elem.classList.contains("in-progress")) {
+                    return;
+                }
+                else if (elem.id === "top-logout-button") {
+                    this.isLoggedIn = false;
+                    localStorage.removeItem("expiresIn");
+                    localStorage.removeItem("battleTag");
+                    localStorage.removeItem("battleId");
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("region");
+                    elem.classList.remove("enabled");
+                    this.drawUserInfo();
+                    this.drawSubPanel();
+                    this.clearJournalUI();
+                    const pjBtnLogin = document.getElementById("btn-personal-journal-onLoggedin");
+                    pjBtnLogin.classList.remove("enabled");
+                    const pjBtnLogout = document.getElementById("btn-personal-journal");
+                    pjBtnLogout.classList.remove("disabled");
+                    const homeButton = document.getElementById("btn-main");
+                    const pjBtnLogout2 = document.getElementById("btn-logout");
+                    pjBtnLogout2.classList.remove("enabled");
+                    homeButton.click();
+                    return;
+                }
+                Array.from(onlinestatus).forEach((elem1) => {
                     elem1.classList.remove("active");
                 });
                 elem.classList.add("active");
@@ -3717,7 +3756,9 @@ class Desktop extends AppWindow_1.AppWindow {
         overlay.classList.remove("active");
     }
     async getUserJournals() {
-        let response = localStorage.getItem("battleId") ? await api_1.getJournals(this.battleId.toString()) : null;
+        let response = localStorage.getItem("battleId")
+            ? await api_1.getJournals(this.battleId.toString())
+            : null;
         const journalList = document.getElementById("journal-tabs");
         for (let i = 0; i < (response === null || response === void 0 ? void 0 : response.data.length); i++) {
             console.log("loop started", i);
@@ -3747,7 +3788,8 @@ class Desktop extends AppWindow_1.AppWindow {
                 const editModalOpenButton = document.getElementById("myBtnEdit");
                 editModalOpenButton.click();
                 console.log("clicked", response.data[i].name);
-                document.getElementById("myInput2").value = response.data[i].name;
+                document.getElementById("myInput2").value =
+                    response.data[i].name;
                 console.log("object", response.data[i]);
                 const cb = document.getElementById("accept");
                 cb.value = response.data[i].template;
@@ -3820,11 +3862,12 @@ class Desktop extends AppWindow_1.AppWindow {
                         const modalOpenButton = document.getElementById("editContentButton");
                         modalOpenButton.click();
                         document.getElementById("editContentTitle").value = element.title;
-                        document.querySelector(".editEditor").innerHTML = element.description;
+                        document.querySelector(".editEditor").innerHTML =
+                            element.description;
                     });
                     textSpan.addEventListener("click", () => {
                         let elems = document.querySelector(".active-tab");
-                        let dataID = elems.getAttribute('data-id');
+                        let dataID = elems.getAttribute("data-id");
                         api_1.deleteJournalContent(dataID, element._id);
                         let item = document.querySelector(`[data-id="${element._id}"]`);
                         item.remove();
@@ -3845,7 +3888,8 @@ class Desktop extends AppWindow_1.AppWindow {
         const saveButton = document.getElementById("saveButton");
         saveButton.addEventListener("click", async (e) => {
             e.preventDefault();
-            let inputVal = document.getElementById("myInput").value;
+            let inputVal = document.getElementById("myInput")
+                .value;
             const cb = document.getElementById("accept");
             const data = {
                 battleId: this.battleId.toString(),
@@ -3855,7 +3899,7 @@ class Desktop extends AppWindow_1.AppWindow {
             const response = await api_1.storeJournals(data);
             if (response.success) {
                 const journalList = document.getElementById("journal-tabs");
-                journalList.innerHTML = '';
+                journalList.innerHTML = "";
                 await this.getUserJournals();
                 let bttnn2 = document.querySelector(`[data-id="${response.data._id}"]`);
                 if (bttnn2) {
@@ -3870,7 +3914,8 @@ class Desktop extends AppWindow_1.AppWindow {
         const saveButtonEdit = document.getElementById("myModal2Save");
         saveButtonEdit.addEventListener("click", async (e) => {
             e.preventDefault();
-            let inputVal = document.getElementById("myInput2").value;
+            let inputVal = document.getElementById("myInput2")
+                .value;
             const cb = document.getElementById("accept");
             let content = document.querySelector(".edit-journel");
             const contentID = content.getAttribute("data-id");
@@ -3881,7 +3926,7 @@ class Desktop extends AppWindow_1.AppWindow {
             const response = await api_1.updateJournals(contentID, data);
             if (response.success) {
                 const journalList = document.getElementById("journal-tabs");
-                journalList.innerHTML = '';
+                journalList.innerHTML = "";
                 await this.getUserJournals();
                 let bttnn2 = document.querySelector(`[data-id="${response.data._id}"]`);
                 if (bttnn2) {
@@ -3902,18 +3947,19 @@ class Desktop extends AppWindow_1.AppWindow {
             const htmlFile = document.querySelector(".editor").innerHTML;
             let data = {
                 title: contentTitle,
-                description: htmlFile
+                description: htmlFile,
             };
             const response = await api_1.storeJournalContent(id, data);
             if (response.success) {
                 const journalList = document.getElementById("journal-tabs");
-                journalList.innerHTML = '';
+                journalList.innerHTML = "";
                 await this.getUserJournals();
                 let bttnn = document.querySelector(`[data-id="${id}"]`);
                 if (bttnn) {
                     bttnn.click();
                 }
-                document.getElementById("contentTitle").value = "";
+                document.getElementById("contentTitle").value =
+                    "";
                 document.querySelector(".editor").innerHTML = "";
             }
             document.querySelector(".ContentModalClose").click();
@@ -3931,12 +3977,12 @@ class Desktop extends AppWindow_1.AppWindow {
             const htmlFile = document.querySelector(".editEditor").innerHTML;
             let data = {
                 title: contentTitle,
-                description: htmlFile
+                description: htmlFile,
             };
             const response = await api_1.editJournalContent(id, contentID, data);
             if (response.success) {
                 const journalList = document.getElementById("journal-tabs");
-                journalList.innerHTML = '';
+                journalList.innerHTML = "";
                 await this.getUserJournals();
                 let bttnn = document.querySelector(`[data-id="${id}"]`);
                 if (bttnn) {
@@ -3960,8 +4006,8 @@ class Desktop extends AppWindow_1.AppWindow {
         this.drawSubPanel();
     }
     clearJournalUI() {
-        const oldJournalList = document.getElementById('journal-tabs');
-        oldJournalList.innerHTML = '';
+        const oldJournalList = document.getElementById("journal-tabs");
+        oldJournalList.innerHTML = "";
     }
     drawUserInfo() {
         const elUserInfo = document.getElementById("user-info");
