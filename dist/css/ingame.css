@@ -1,5 +1,5 @@
 .in-game {
-  font-family: 'Friz Quadrata TT';
+  font-family: "Friz Quadrata TT";
 }
 
 body {
@@ -22,28 +22,25 @@ main {
   overflow: auto;
 }
 
-main::-webkit-scrollbar-track
-{
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+main::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   background-color: #444444;
 }
 
-main::-webkit-scrollbar
-{
+main::-webkit-scrollbar {
   width: 5px;
   height: 5px;
   background-color: #444444;
 }
 
-main::-webkit-scrollbar-thumb
-{
+main::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  box-shadow: inset 0 0 6px rgba(0,0,0,.5);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   background-color: #ffd100;
 }
 
-body{
+body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -65,7 +62,8 @@ header {
   clip-path: polygon(0 3px, 3px 0, calc(100% - 3px) 0, 100% 3px, 100% 100%, 0 100%);
 }
 
-main, .talent-table {
+main,
+.talent-table {
   margin-bottom: -5px;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0 calc(100% - 3px));
 }
@@ -215,7 +213,7 @@ button.logCopy:hover {
 }
 
 button {
-  width: 90px;
+  min-width: 90px;
   height: 18px;
   font-size: 9px;
   color: #cbc6c6;
@@ -244,7 +242,16 @@ main .right-ad-panel #right-ad-div {
   height: 600px;
   margin-top: -9px;
   margin-bottom: -4px;
-  clip-path: polygon(0 3px, 3px 0, calc(100% - 3px) 0, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 4px 100%, 0 calc(100% - 4px));
+  clip-path: polygon(
+    0 3px,
+    3px 0,
+    calc(100% - 3px) 0,
+    100% 3px,
+    100% calc(100% - 3px),
+    calc(100% - 3px) 100%,
+    4px 100%,
+    0 calc(100% - 4px)
+  );
 }
 
 main > div#scale {
@@ -265,7 +272,16 @@ main .bottom-ad-panel #bottom-ad-div {
   margin-top: -9px;
   margin-bottom: -4px;
   text-align: center;
-  clip-path: polygon(0 3px, 3px 0, calc(100% - 3px) 0, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 4px 100%, 0 calc(100% - 4px));
+  clip-path: polygon(
+    0 3px,
+    3px 0,
+    calc(100% - 3px) 0,
+    100% 3px,
+    100% calc(100% - 3px),
+    calc(100% - 3px) 100%,
+    4px 100%,
+    0 calc(100% - 4px)
+  );
 }
 
 main .condition-panel {
@@ -307,7 +323,7 @@ main .condition-panel > div#raid_dungeon-switch__container {
   background: url(../img/in-game-window/switch/switch-bg.png) no-repeat center;
 }
 #raid_dungeon-switch__container div#raid_dungeon-switch::before {
-  content: ' ';
+  content: " ";
   position: absolute;
   width: 28px;
   height: 28px;
@@ -410,7 +426,7 @@ main #message {
   top: -100%;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, .4);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 2;
   font-size: 24px;
   justify-content: center;
@@ -431,7 +447,7 @@ main #message div {
   width: 300px;
   padding: 10px;
   color: #ffd100;
-  background: rgba(0, 0, 0, .7);
+  background: rgba(0, 0, 0, 0.7);
   border: 3px solid #ffd100;
 }
 
@@ -440,6 +456,12 @@ input#advanced_filters {
 }
 input#advanced_filters + label {
   opacity: 0;
+}
+.enabled {
+  display: list-item;
+}
+.disabled {
+  display: none;
 }
 
 @keyframes messageAnim {

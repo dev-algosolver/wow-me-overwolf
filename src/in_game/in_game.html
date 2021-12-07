@@ -1,218 +1,824 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" href="../../css/general.css" />
-  <link rel="stylesheet" href="../../css/header.css" />
-  <link rel="stylesheet" href="../../css/ingame.css" />
-  <link rel="stylesheet" href="../../css/resize.css" />
-  <link rel="stylesheet" href="../../css/modal.css" />
-  <link rel="stylesheet" href="../../css/dropdown.css" />
-  <link rel="stylesheet" href="../../css/ranger.css" />
-  <link rel="stylesheet" href="../../css/talent-table.css" />
-  <title>WoW.me - In-Game page</title>
-</head>
-<body class="in-game image-border">
-  <!-- -------------------------------- Header ------------------------------- -->
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../../css/general.css" />
+    <link rel="stylesheet" href="../../css/header.css" />
+    <link rel="stylesheet" href="../../css/desktop.css" />
+    <link rel="stylesheet" href="../../css/ingame.css" />
+    <link rel="stylesheet" href="../../css/resize.css" />
+    <link rel="stylesheet" href="../../css/modal.css" />
+    <link rel="stylesheet" href="../../css/dropdown.css" />
+    <link rel="stylesheet" href="../../css/ranger.css" />
+    <link rel="stylesheet" href="../../css/talent-table.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>WoW.me - In-Game page</title>
+  </head>
+  <body class="in-game image-border">
+    <!-- -------------------------------- Header ------------------------------- -->
 
-  <header id="header" class="app-header">
-    <div class="menu-panel">
-      <button id="btn-talent-picker">Talent Picker</button>
-      <button id="btn-condult-picker" class="work-in-progress" message="Were still working on this feature, coming soon!">Condult Picker</button>
-      <button id="btn-personal-journal" class="work-in-progress" message="Were still working on this feature, coming soon!">Personal Journal</button>
-      <button id="btn-gear-optimizer" class="work-in-progress" message="Were still working on this feature, coming soon!">Gear Optimizer</button>
-    </div>
-    <h1 style="margin: auto;">
-      Show/Hide:
-      <a href="overwolf://settings/games-overlay?hotkey=showhide&gameId=765" id="hotkey" style="font-weight: bold; color: white;"></a>
-    </h1>
-    <div class="window-controls-group">
-      <button class="icon window-control" id="minimizeButton">
-        <img src="/img/in-game-window/button/minimize.png" alt="Minimize" />
-      </button>
-      <!-- <button class="icon window-control" id="maximizeButton">
+    <header id="header" class="app-header">
+      <div class="menu-panel">
+        <button id="btn-talent-picker">Talent Picker</button>
+        <button
+          id="btn-condult-picker"
+          class="work-in-progress"
+          message="Were still working on this feature, coming soon!"
+        >
+          Condult Picker
+        </button>
+        <button id="btn-personal-journal" page-type="personal-journal">
+          Personal Journal (Login required)
+        </button>
+        <button
+          id="btn-personal-journal-onLoggedin"
+          page-type="personal-journal"
+        >
+          Personal Journal
+        </button>
+        <button
+          id="btn-gear-optimizer"
+          class="work-in-progress"
+          message="Were still working on this feature, coming soon!"
+        >
+          Gear Optimizer
+        </button>
+      </div>
+      <h1 style="margin: auto">
+        Show/Hide:
+        <a
+          href="overwolf://settings/games-overlay?hotkey=showhide&gameId=765"
+          id="hotkey"
+          style="font-weight: bold; color: white"
+        ></a>
+      </h1>
+      <div class="window-controls-group">
+        <button class="icon window-control" id="minimizeButton">
+          <img src="/img/in-game-window/button/minimize.png" alt="Minimize" />
+        </button>
+        <!-- <button class="icon window-control" id="maximizeButton">
         <img src="/img/in-game-window/button/maximize.png" alt="Maximize" id="maximize-img" />
       </button> -->
-      <button class="icon window-control window-control-close" id="closeButton">
-        <img src="/img/in-game-window/button/close.png" alt="Close" />
-      </button>
+        <button
+          class="icon window-control window-control-close"
+          id="closeButton"
+        >
+          <img src="/img/in-game-window/button/close.png" alt="Close" />
+        </button>
+      </div>
+    </header>
+    <!-- --------------------------------- Main -------------------------------- -->
+
+    <div class="range-slider opacity-slider">
+      <input
+        type="range"
+        id="opacity-range"
+        value="100"
+        step="1"
+        min="50"
+        max="100"
+      />
     </div>
-  </header>
-  <!-- --------------------------------- Main -------------------------------- -->
 
-  <div class="range-slider opacity-slider">
-    <input type="range" id="opacity-range" value="100" step="1" min="50" max="100" />
-  </div>
-
-  <main>
-    <div id="scale">
-      <div class="main-top">
-        <div class="container">
-          <div id="message">
-            <div>It's work in progress.</div>
-          </div>
-          <div class="condition-panel image-border">
-            <div id="raid_dungeon-switch__container" data="dungeon">
-              <a href="#" id="switch_dungeon">Dungeon</a>
-              <div id="raid_dungeon-switch"></div>
-              <a href="#" id="switch_raid">Raid</a>
+    <main>
+      <div id="scale">
+        <div class="main-top">
+          <div class="container">
+            <div id="message">
+              <div>It's work in progress.</div>
             </div>
-            <div id="raid_dungeon-select-box__container">
-              <label>Raid / Dungeon</label>
-            </div>
-            <div id="class-select-box__container">
-              <label>Class</label>
-            </div>
-            <div>
-              <div id="key_level-select-box__container">
-                <label>Raid Level</label>
-              </div>
-              <div id="ranger__container">
-                <label>Keystone Level</label>
-                <div class="range-slider">
-                  <input type="range" value="1" step="1" min="1" max="45" id="key-stone-level-min" />
-                  <input type="range" value="45" step="1" min="1" max="45" id="key-stone-level-max" />
-                  <span id="key-stone-level-text"></span>
+            <div class="talent-picker-content">
+              <!-- <h1>Talent Picker</h1> -->
+              <div class="talent-picker-container">
+                <div class="talent-picker image-border">
+                  <div class="condition-panel image-border">
+                    <div id="raid_dungeon-switch__container" data="dungeon">
+                      <a href="#" id="switch_dungeon">Dungeon</a>
+                      <div id="raid_dungeon-switch"></div>
+                      <a href="#" id="switch_raid">Raid</a>
+                    </div>
+                    <div id="raid_dungeon-select-box__container">
+                      <label>Raid / Dungeon</label>
+                    </div>
+                    <div id="class-select-box__container">
+                      <label>Class</label>
+                    </div>
+                    <div>
+                      <div id="key_level-select-box__container">
+                        <label>Raid Level</label>
+                      </div>
+                      <div id="ranger__container">
+                        <label>Keystone Level</label>
+                        <div class="range-slider">
+                          <input
+                            type="range"
+                            value="1"
+                            step="1"
+                            min="1"
+                            max="45"
+                            id="key-stone-level-min"
+                          />
+                          <input
+                            type="range"
+                            value="45"
+                            step="1"
+                            min="1"
+                            max="45"
+                            id="key-stone-level-max"
+                          />
+                          <span id="key-stone-level-text"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="specs-select-box__container">
+                      <label>Specs</label>
+                    </div>
+                    <div>
+                      <div id="raid_boss-select-box__container">
+                        <label>Raid Boss</label>
+                      </div>
+                    </div>
+                    <div id="checkbox__container">
+                      <input type="checkbox" id="advanced_filters" />
+                      <label for="advanced_filters">Advanced Filters</label>
+                      <input type="checkbox" id="tree_mode" />
+                      <label for="tree_mode">Full Builds</label>
+                    </div>
+                  </div>
+                  <div class="talent-panel image-border">
+                    <div id="talent-anim-panel">
+                      <div class="talent-panel-header">
+                        <label id="talent-panel-title"
+                          >Most Popular Talent Trees</label
+                        >
+                        <div id="tree_mode_action_panel">
+                          <label id="pick_rate">Pick Rate : 90%</label>
+                          <button id="btn_prev">
+                            <img
+                              src="/img/in-game-window/button/prev.png"
+                              alt="Prev"
+                            />
+                          </button>
+                          <button id="btn_next">
+                            <img
+                              src="/img/in-game-window/button/next.png"
+                              alt="Next"
+                            />
+                          </button>
+                          <label id="tree_index">1 / 4</label>
+                        </div>
+                      </div>
+                      <div id="talent-table-container"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div id="specs-select-box__container">
-              <label>Specs</label>
-            </div>
-            <div>
-              <div id="raid_boss-select-box__container">
-                <label>Raid Boss</label>
-              </div>
-            </div>
-            <div id="checkbox__container">
-              <input type="checkbox" id="advanced_filters" />
-              <label for="advanced_filters">Advanced Filters</label>
-              <input type="checkbox" id="tree_mode" />
-              <label for="tree_mode">Full Builds</label>
-            </div>
-          </div>
-          <div class="talent-panel image-border">
-            <div id="talent-anim-panel">
-              <div class="talent-panel-header">
-                <label id="talent-panel-title">Most Popular Talent Trees</label>
-                <div id="tree_mode_action_panel">
-                  <label id="pick_rate">Pick Rate : 90%</label>
-                  <button id="btn_prev"><img src="/img/in-game-window/button/prev.png" alt="Prev" /></button>
-                  <button id="btn_next"><img src="/img/in-game-window/button/next.png" alt="Next" /></button>
-                  <label id="tree_index">1 / 4</label>
+            <div class="personal-journal-content">
+              <h1>Personal Journal</h1>
+              <div class="personal-journal-container">
+                <div class="personal-journal">
+                  <!-- JOurneal add -->
+                  <div class="journal-tabs-wrapper">
+                    <div id="journal-tabs"></div>
+                    <div id="journal-tabs-button">
+                      <button class="tab-action-button" id="myBtn">
+                        <span
+                          class="material-icons"
+                          style="font-size: 17px; margin-right: 5px"
+                        >
+                          add_circle
+                        </span>
+                        Add Page
+                      </button>
+                    </div>
+                  </div>
+                  <div id="myModal" class="modal">
+                    <div class="modal-content">
+                      <span class="close"></span>
+                      <p class="modalTitle2">Title</p>
+                      <input type="text" id="myInput" />
+                      <!-- <label for="accept" class="checkBox">
+                      <input
+                        type="checkbox"
+                        id="accept"
+                        name="accept"
+                        value="checked"
+                      />
+                      save as template
+                    </label> -->
+                      <button id="saveButton" type="button">Save</button>
+                    </div>
+                  </div>
+
+                  <!-- journel edit modal -->
+
+                  <button
+                    style="visibility: hidden; height: 0px; width: 0px"
+                    class="tab-action-button"
+                    id="myBtnEdit"
+                  ></button>
+                  <div id="myModal2" class="modal">
+                    <div class="modal-content">
+                      <span class="myModal2Close"></span>
+                      <p class="modalTitle2">Title</p>
+                      <input type="text" id="myInput2" />
+                      <!-- <label for="accept" class="checkBox">
+                      <input
+                        type="checkbox"
+                        id="accept"
+                        name="accept"
+                        value="checked"
+                      />
+                      save as template
+                    </label> -->
+                      <button id="myModal2Save" type="button">Save</button>
+                    </div>
+                  </div>
+
+                  <div class="journal-content">
+                    <div id="journal-item-container">
+                      <!-- <div class="journal-item">
+                      <button class="accordion">Mythic +</button>
+                      <p>ToP +10 2 Chest--Todo:</p>
+                    </div> -->
+                    </div>
+
+                    <div id="addContentModal" class="modal">
+                      <div class="modal-content-add">
+                        <span class="ContentModalClose"></span>
+                        <div class="container" id="richTextEditor">
+                          <p class="journalModalHeader">Create new journal</p>
+                          <p class="modalTitle">Title</p>
+                          <input type="text" id="contentTitle" />
+                          <p class="modalTitle">Description</p>
+                          <div class="wrapper">
+                            <div class="richEditor">
+                              <div class="toolbar">
+                                <button
+                                  class="material-icons"
+                                  data-element="bold"
+                                  title="bold"
+                                >
+                                  format_bold
+                                </button>
+                                <button
+                                  class="material-icons"
+                                  data-element="underline"
+                                  title="Underline"
+                                >
+                                  format_underline
+                                </button>
+                                <button
+                                  class="material-icons"
+                                  data-element="strikeThrough"
+                                  title="StrikeThrough"
+                                >
+                                  format_strikethrough
+                                </button>
+
+                                <button
+                                  class="material-icons"
+                                  data-element="add"
+                                  title="Increase Font Size"
+                                >
+                                  add
+                                </button>
+                                <button
+                                  class="material-icons"
+                                  data-element="remove"
+                                  title="Decrease Font Size"
+                                >
+                                  remove
+                                </button>
+                                <button
+                                  class="material-icons"
+                                  data-element="checkbox"
+                                  title="Checkbox"
+                                >
+                                  add_box
+                                </button>
+                                <button
+                                  class="material-icons"
+                                  data-element="foreColor"
+                                  title="Text Color"
+                                >
+                                  format_color_text
+                                  <input
+                                    name="Color Picker"
+                                    type="color"
+                                    id="colorPicker"
+                                    onchange="updateColor(this)"
+                                    style="
+                                      visibility: hidden;
+                                      width: 0px;
+                                      height: 0px;
+                                    "
+                                  />
+                                </button>
+                              </div>
+                              <div
+                                class="editor"
+                                contenteditable="true"
+                                data-gramm_editor="false"
+                              ></div>
+                            </div>
+                          </div>
+                          <button
+                            type="submit"
+                            class="submitButton"
+                            id="contentsaveButton"
+                          >
+                            Save
+                          </button>
+                          <button type="submit" class="cancelButton">
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      id="addContentButton"
+                      type="button"
+                      style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      "
+                    >
+                      <span
+                        class="material-icons"
+                        style="font-size: 17px; margin-right: 5px"
+                      >
+                        add_circle
+                      </span>
+                      Add new content
+                    </button>
+                    <!-- edit modal -->
+                    <div id="editContentModal" class="modal">
+                      <div class="modal-content-add">
+                        <span class="editContentModalClose">&times;</span>
+                        <div class="container" id="richTextEditor2">
+                          <p class="journalModalHeader">Update journal</p>
+                          <p class="modalTitle">Title</p>
+                          <input type="text" id="editContentTitle" />
+                          <p class="modalTitle">Description</p>
+                          <div class="wrapper">
+                            <div class="richEditor">
+                              <div class="toolbar">
+                                <button
+                                  class="material-icons"
+                                  data-element="bold"
+                                  title="bold"
+                                >
+                                  format_bold
+                                </button>
+                                <button
+                                  class="material-icons"
+                                  data-element="underline"
+                                  title="Underline"
+                                >
+                                  format_underline
+                                </button>
+                                <button
+                                  class="material-icons"
+                                  data-element="strikeThrough"
+                                  title="StrikeThrough"
+                                >
+                                  format_strikethrough
+                                </button>
+
+                                <button
+                                  class="material-icons"
+                                  data-element="add"
+                                  title="Increase Font Size"
+                                >
+                                  add
+                                </button>
+                                <button
+                                  class="material-icons"
+                                  data-element="remove"
+                                  title="Decrease Font Size"
+                                >
+                                  remove
+                                </button>
+                                <button
+                                  class="material-icons"
+                                  data-element="checkbox"
+                                  title="Checkbox"
+                                >
+                                  add_box
+                                </button>
+                                <button
+                                  class="material-icons"
+                                  data-element="foreColor"
+                                  title="Text Color"
+                                >
+                                  format_color_text
+                                  <input
+                                    name="Color Picker"
+                                    type="color"
+                                    id="colorPicker"
+                                    onchange="updateColor(this)"
+                                    style="visibility: hidden; width: 0px"
+                                  />
+                                </button>
+                              </div>
+                              <div
+                                class="editEditor"
+                                contenteditable="true"
+                                data-gramm_editor="false"
+                              ></div>
+                            </div>
+                          </div>
+                          <button
+                            type="submit"
+                            class="submitButton2"
+                            id="contentsaveButton2"
+                          >
+                            Save
+                          </button>
+                          <button type="submit" class="cancelButton2">
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      id="editContentButton"
+                      type="button"
+                      style="visibility: hidden; height: 0px; width: 0px"
+                    >
+                      edit content
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div id="talent-table-container"></div>
+            </div>
+            <div class="action-panel image-border" id="action-panel">
+              <div>
+                <button id="btn_refresh">Refresh</button>
+                <button
+                  id="btn_share"
+                  class="work-in-progress"
+                  message="You'd click here to share your talents with someone else."
+                >
+                  Share
+                </button>
+                <button
+                  id="btn_donate"
+                  class="work-in-progress"
+                  message="You'd click here to donate to our team and help us bring more features to you!"
+                >
+                  Donate
+                </button>
+                <button
+                  id="btn_ad_free"
+                  class="work-in-progress"
+                  message="We’re working on a premium version to remove all advertisement"
+                >
+                  Ad free
+                </button>
+                <button
+                  id="btn_feedback"
+                  class="work-in-progress"
+                  message="You'd click here to send us feedback and help us improve"
+                >
+                  Feedback
+                </button>
+              </div>
             </div>
           </div>
-          <div class="action-panel image-border" id="action-panel">
-            <div>
-              <button id="btn_refresh">Refresh</button>
-              <button id="btn_share" class="work-in-progress" message="You'd click here to share your talents with someone else.">Share</button>
-              <button id="btn_donate" class="work-in-progress" message="You'd click here to donate to our team and help us bring more features to you!">Donate</button>
-              <button id="btn_ad_free" class="work-in-progress" message="We’re working on a premium version to remove all advertisement">Ad free</button>
-              <button id="btn_feedback" class="work-in-progress" message="You'd click here to send us feedback and help us improve">Feedback</button>
-            </div>
+          <div class="right-ad-panel image-border">
+            <div id="right-ad-div"></div>
           </div>
         </div>
-        <div class="right-ad-panel image-border">
-          <div id="right-ad-div"></div>
+        <div class="main-bottom bottom-ad-panel image-border">
+          <div id="bottom-ad-div"></div>
         </div>
       </div>
-      <div class="main-bottom bottom-ad-panel image-border">
-        <div id="bottom-ad-div"></div>
-      </div>
-    </div>
-  </main>
-  <div class="resize horizontal top" edge="Top"></div>
-  <div class="resize vertical left" edge="Left"></div>
-  <div class="resize vertical right" edge="Right"></div>
-  <div class="resize horizontal bottom" edge="Bottom"></div>
+    </main>
+    <div class="resize horizontal top" edge="Top"></div>
+    <div class="resize vertical left" edge="Left"></div>
+    <div class="resize vertical right" edge="Right"></div>
+    <div class="resize horizontal bottom" edge="Bottom"></div>
 
-  <div class="resize corner top-left" edge="TopLeft"></div>
-  <div class="resize corner top-right" edge="TopRight"></div>
-  <div class="resize corner bottom-left" edge="BottomLeft"></div>
-  <div class="resize corner bottom-right" edge="BottomRight"></div>
-
-  <script src="https://content.overwolf.com/libs/ads/latest/owads.min.js" async onload="onOwAdReady()"></script>
-  <script>
-    let _rightOwAd = null;
-    let _bottomOwAd = null;
-   
-    setTimeout(() => {
-      if (!_rightOwAd || !_bottomOwAd) {
-        console.error("Couldn't load owads.min.js!");
+    <div class="resize corner top-left" edge="TopLeft"></div>
+    <div class="resize corner top-right" edge="TopRight"></div>
+    <div class="resize corner bottom-left" edge="BottomLeft"></div>
+    <div class="resize corner bottom-right" edge="BottomRight"></div>
+    <script>
+      function toggleActiveTab() {
+        var element = document.getElementsByClassName("tab-link");
+        console.log(element.length);
+        element.classList.toggle("active-tab");
       }
-    }, 20000);
-   
-    function onOwAdReady() {
-      try {
-        if (!OwAd) {
-          setTimeout(() => {
-            if (!_rightOwAd || !_bottomOwAd) {
-              onOwAdReady();
-            }
-          }, 2000);
-          
-          return;
-        }
-    
-        _rightOwAd = new OwAd(document.getElementById("right-ad-div"), {size: {width: 160, height: 600}});
-        _bottomOwAd = new OwAd(document.getElementById("bottom-ad-div"), {size: {width: 728, height: 90}});
+    </script>
+    <script
+      src="https://content.overwolf.com/libs/ads/latest/owads.min.js"
+      async
+      onload="onOwAdReady()"
+    ></script>
+    <script>
+      let _rightOwAd = null;
+      let _bottomOwAd = null;
 
-        function onWindowStateChanged(state) {
-          if (state && state.window_name === "in_game") {
-            if (state.window_state === "minimized") {
-              _rightOwAd.removeAd();
-              _bottomOwAd.removeAd();
-            } else if (state.window_state === "normal" && state.window_previous_state === "minimized") {
-              _rightOwAd.refreshAd();
+      setTimeout(() => {
+        if (!_rightOwAd || !_bottomOwAd) {
+          console.error("Couldn't load owads.min.js!");
+        }
+      }, 20000);
+
+      function onOwAdReady() {
+        try {
+          if (!OwAd) {
+            setTimeout(() => {
+              if (!_rightOwAd || !_bottomOwAd) {
+                onOwAdReady();
+              }
+            }, 2000);
+
+            return;
+          }
+
+          _rightOwAd = new OwAd(document.getElementById("right-ad-div"), {
+            size: { width: 160, height: 600 },
+          });
+          _bottomOwAd = new OwAd(document.getElementById("bottom-ad-div"), {
+            size: { width: 728, height: 90 },
+          });
+
+          function onWindowStateChanged(state) {
+            if (state && state.window_name === "in_game") {
+              if (state.window_state === "minimized") {
+                _rightOwAd.removeAd();
+                _bottomOwAd.removeAd();
+              } else if (
+                state.window_state === "normal" &&
+                state.window_previous_state === "minimized"
+              ) {
+                _rightOwAd.refreshAd();
+                _bottomOwAd.refreshAd();
+              }
+            }
+          }
+
+          overwolf.windows.onStateChanged.removeListener(onWindowStateChanged);
+          overwolf.windows.onStateChanged.addListener(onWindowStateChanged);
+
+          function onWindowScrolled(e) {
+            if (
+              elMain.scrollTop >
+              elMain.scrollHeight - elMain.offsetHeight - 90
+            ) {
+              // end of page
               _bottomOwAd.refreshAd();
+            } else {
+              _bottomOwAd.removeAd();
             }
           }
+
+          const elMain = document.getElementsByTagName("main")[0];
+          elMain.removeEventListener("scroll", onWindowScrolled);
+          elMain.addEventListener("scroll", onWindowScrolled);
+          window.removeEventListener("resize", onWindowScrolled);
+          window.addEventListener("resize", onWindowScrolled);
+        } catch (e) {
+          console.log(e);
         }
-
-        overwolf.windows.onStateChanged.removeListener(onWindowStateChanged);
-        overwolf.windows.onStateChanged.addListener(onWindowStateChanged);
-
-        function onWindowScrolled(e) {
-          if (elMain.scrollTop > elMain.scrollHeight - elMain.offsetHeight - 90) { // end of page
-            _bottomOwAd.refreshAd();
-          } else {
-            _bottomOwAd.removeAd();
-          }
-        }
-
-        const elMain = document.getElementsByTagName('main')[0];
-        elMain.removeEventListener('scroll', onWindowScrolled);
-        elMain.addEventListener('scroll', onWindowScrolled);
-        window.removeEventListener('resize', onWindowScrolled);
-        window.addEventListener('resize', onWindowScrolled);
-
-      } catch (e) {
-        console.log(e);
       }
-    }
-    onOwAdReady();
+      onOwAdReady();
+    </script>
+    <script>
+      // Standard Google Universal Analytics code
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+        // Note: https protocol here
+      })(
+        window,
+        document,
+        "script",
+        "https://www.google-analytics.com/analytics.js",
+        "ga"
+      );
 
-  </script>
-  <script>
-    // Standard Google Universal Analytics code
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      },
-        i[r].l = 1 * new Date(); a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-      // Note: https protocol here
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+      ga("create", "UA-144253676-3", "auto");
 
-    ga('create', 'UA-144253676-3', 'auto');
+      // Removes failing protocol check. @see: http://stackoverflow.com/a/22152353/1958200
+      ga("set", "checkProtocolTask", function () {});
+      ga("require", "displayfeatures");
+      ga("send", "pageview", "/in_game.html");
+    </script>
 
-    // Removes failing protocol check. @see: http://stackoverflow.com/a/22152353/1958200
-    ga('set', 'checkProtocolTask', function () { });
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview', '/in_game.html');
-  </script>
-</body>
+    <script>
+      var modal = document.getElementById("myModal");
+
+      var btn = document.getElementById("myBtn");
+
+      var span = document.getElementsByClassName("close")[0];
+
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+
+    <script>
+      var mymodalEdit = document.getElementById("myModal2");
+
+      var myBtnEdit = document.getElementById("myBtnEdit");
+
+      var myModal2Close = document.getElementsByClassName("myModal2Close")[0];
+
+      myBtnEdit.onclick = function () {
+        mymodalEdit.style.display = "block";
+      };
+
+      myModal2Close.onclick = function () {
+        mymodalEdit.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == mymodalEdit) {
+          mymodalEdit.style.display = "none";
+        }
+      };
+    </script>
+
+    <script>
+      var modal2 = document.getElementById("addContentModal");
+
+      var btn2 = document.getElementById("addContentButton");
+
+      var span2 = document.getElementsByClassName("ContentModalClose")[0];
+
+      btn2.onclick = function () {
+        modal2.style.display = "block";
+      };
+
+      span2.onclick = function () {
+        modal2.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal2) {
+          modal2.style.display = "none";
+        }
+      };
+    </script>
+
+    <script>
+      var modal3 = document.getElementById("editContentModal");
+
+      var btn3 = document.getElementById("editContentButton");
+
+      var span3 = document.getElementsByClassName("editContentModalClose")[0];
+
+      btn3.onclick = function () {
+        modal3.style.display = "block";
+      };
+
+      span3.onclick = function () {
+        modal3.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal3) {
+          modal3.style.display = "none";
+        }
+      };
+    </script>
+
+    <script>
+      const formateIcons = document.querySelectorAll(
+        ".toolbar .material-icons"
+      );
+
+      formateIcons.forEach((icons) => {
+        icons.addEventListener("click", () => {
+          const selected = icons.dataset["element"];
+          if (selected === "createLink" || selected === "insertImage") {
+            const url = prompt("Url");
+            url && document.execCommand(selected, false, url);
+          } else if (selected === "checkbox") {
+            let now = Date.now();
+            let checkbox = `<input type="checkbox" id='${now.toString()}'  onClick='checkbox(this)'>&nbsp; `;
+
+            document.execCommand("insertHTML", false, checkbox);
+          } else if (selected === "add" || selected === "remove") {
+            let size = document.getSelection().focusNode.parentNode.size;
+            let fontSize =
+              selected === "add"
+                ? size
+                  ? parseInt(size) + 1
+                  : 4
+                : size
+                ? parseInt(size) - 1
+                : 2;
+            let res = document.execCommand(
+              "fontSize",
+              false,
+              parseInt(fontSize)
+            );
+            console.log(fontSize);
+          } else if (selected === "foreColor") {
+            document.querySelector("#colorPicker").click();
+          } else {
+            document.execCommand(selected, false, null);
+          }
+        });
+      });
+
+      const sumbmitButton = document.querySelector(".submitButton");
+      const cancelButton = document.querySelector(".cancelButton");
+
+      const sumbmitButton2 = document.querySelector(".submitButton2");
+      const cancelButton2 = document.querySelector(".cancelButton2");
+
+      sumbmitButton.addEventListener("click", () => {
+        const htmlFile = document.querySelector(".editor").innerHTML;
+        console.log(htmlFile);
+      });
+
+      cancelButton.addEventListener("click", () => {
+        document.querySelector(".editor").innerHTML = "";
+        console.log(htmlFile);
+      });
+
+      sumbmitButton2.addEventListener("click", () => {
+        const htmlFile = document.querySelector(".editEditor").innerHTML;
+        console.log(htmlFile);
+      });
+
+      cancelButton2.addEventListener("click", () => {
+        document.querySelector(".editEditor").innerHTML = "";
+        console.log(htmlFile);
+      });
+
+      function checkbox(e) {
+        let checkid = document.getElementById(e.id);
+        console.log(e.checked);
+        if (e.checked) {
+          checkid.setAttribute("checked", "checked");
+        } else {
+          checkid.removeAttribute("checked");
+        }
+        console.log(checkid);
+      }
+
+      function updateColor(e) {
+        let pickedColor = document.querySelector("#colorPicker").value;
+        console.log(pickedColor);
+        document.execCommand("foreColor", false, pickedColor);
+      }
+    </script>
+
+    <script>
+      let richtext = document.getElementById("addContentButton");
+      let richtext2 = document.getElementById("editContentButton");
+
+      let richtextContainer = document.getElementById("richTextEditor");
+      let richtextContainer2 = document.getElementById("richTextEditor2");
+
+      richtext.addEventListener("click", function () {
+        if (richtextContainer.classList.contains("active")) {
+          richtextContainer.classList.remove("active");
+        } else {
+          richtextContainer.classList.add("active");
+        }
+      });
+
+      richtext2.addEventListener("click", function () {
+        if (richtextContainer2.classList.contains("active")) {
+          richtextContainer2.classList.remove("active");
+        } else {
+          richtextContainer2.classList.add("active");
+        }
+      });
+    </script>
+  </body>
 </html>
