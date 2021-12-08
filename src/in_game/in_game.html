@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../../css/general.css" />
     <link rel="stylesheet" href="../../css/header.css" />
-    <link rel="stylesheet" href="../../css/desktop.css" />
+    <!-- <link rel="stylesheet" href="../../css/desktop.css" /> -->
     <link rel="stylesheet" href="../../css/ingame.css" />
     <link rel="stylesheet" href="../../css/resize.css" />
     <link rel="stylesheet" href="../../css/modal.css" />
@@ -22,7 +22,13 @@
 
     <header id="header" class="app-header">
       <div class="menu-panel">
-        <button id="btn-talent-picker">Talent Picker</button>
+        <button
+          class="menu-item"
+          id="btn-talent-picker"
+          page-type="talent-picker"
+        >
+          Talent Picker
+        </button>
         <button
           id="btn-condult-picker"
           class="work-in-progress"
@@ -30,10 +36,9 @@
         >
           Condult Picker
         </button>
-        <button id="btn-personal-journal" page-type="personal-journal">
-          Personal Journal (Login required)
-        </button>
+        <button id="btn-personal-journal" page-type="">Personal Journal</button>
         <button
+          class="menu-item"
           id="btn-personal-journal-onLoggedin"
           page-type="personal-journal"
         >
@@ -90,7 +95,7 @@
             <div id="message">
               <div>It's work in progress.</div>
             </div>
-            <div class="talent-picker-content">
+            <div class="talent-picker-content enabled">
               <!-- <h1>Talent Picker</h1> -->
               <div class="talent-picker-container">
                 <div class="talent-picker image-border">
@@ -177,7 +182,7 @@
                 </div>
               </div>
             </div>
-            <div class="personal-journal-content">
+            <div class="personal-journal-content disabled">
               <h1>Personal Journal</h1>
               <div class="personal-journal-container">
                 <div class="personal-journal">
@@ -501,6 +506,13 @@
         <div class="main-bottom bottom-ad-panel image-border">
           <div id="bottom-ad-div"></div>
         </div>
+        <div class="page-right">
+          <div class="panel sub-panel" id="sub-panel">
+            <div id="loading-overlay">
+              <img src="/img/desktop-window/loading.gif" alt="" />
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <div class="resize horizontal top" edge="Top"></div>
@@ -555,12 +567,16 @@
 
           function onWindowStateChanged(state) {
             if (state && state.window_name === "in_game") {
-              if (state.window_state === "minimized") {
+              if (
+                state.window_state === "minimized" ||
+                gameInfo.isInFocus === false
+              ) {
                 _rightOwAd.removeAd();
                 _bottomOwAd.removeAd();
               } else if (
                 state.window_state === "normal" &&
-                state.window_previous_state === "minimized"
+                state.window_previous_state === "minimized" &&
+                gameInfo.isInFocus === true
               ) {
                 _rightOwAd.refreshAd();
                 _bottomOwAd.refreshAd();

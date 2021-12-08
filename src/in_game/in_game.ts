@@ -11,6 +11,7 @@ import {
   deleteJournal,
   deleteJournalContent,
   editJournalContent,
+  getCharacters,
   getJournals,
   getToken,
   setAuthToken,
@@ -61,7 +62,7 @@ class InGame extends AppWindow {
       this.region = localStorage.getItem("region");
 
       setAuthToken(token);
-      // this.getUserCharacterInfo();
+      this.getUserCharacterInfo();
     } else {
       localStorage.removeItem("token");
       localStorage.removeItem("expiresIn");
@@ -132,6 +133,7 @@ class InGame extends AppWindow {
   }
 
   private initButtonEvents() {
+    this.activeScreen();
     const pjBtnLogin = document.getElementById(
       "btn-personal-journal-onLoggedin"
     );
@@ -145,10 +147,140 @@ class InGame extends AppWindow {
       overwolf.utils.openUrlInDefaultBrowser(authorizeUrl);
     });
   }
+  private activeScreen() {
+    const personalJournalContent = document.querySelector(
+      ".personal-journal-content"
+    );
+    const personalJournal = document.querySelector(".personal-journal");
+    const talentPickerContent = document.querySelector(
+      ".talent-picker-content"
+    );
+    const talentPicker = document.querySelector(".talent-picker");
+
+    const menuItems = document.getElementsByClassName("menu-item");
+    Array.from(menuItems).forEach((elem) => {
+      elem.addEventListener("click", (e) => {
+        if (elem.classList.contains("work-in-progress")) {
+          return;
+        } else if (elem.id == "btn-personal-journal-onLoggedin") {
+          console.log("Hello");
+
+          personalJournalContent.classList.add("enabled");
+          personalJournalContent.classList.remove("disabled");
+          talentPickerContent.classList.remove("enabled");
+          talentPickerContent.classList.add("disabled");
+
+          return;
+        } else {
+          console.log("Not Hello");
+          talentPickerContent.classList.add("enabled");
+          talentPickerContent.classList.remove("disabled");
+          personalJournalContent.classList.remove("enabled");
+          personalJournalContent.classList.add("disabled");
+
+          return;
+        }
+      });
+    });
+  }
+  private async setCurrentHotkeyToInput() {
+    const elInput = document.getElementById("hotkey-editor");
+    const hotkeyText = await OWHotkeys.getHotkeyText(
+      hotkeys.toggle,
+      wowClassId
+    );
+    elInput.innerText = hotkeyText;
+    return hotkeyText;
+  }
+  private initHotkeyInput() {
+    this.setCurrentHotkeyToInput();
+
+    const elInput = document.getElementById("hotkey-editor");
+    const elClose = document.getElementById("hotkey-close");
+
+    let keys = ["", "", "", ""];
+
+    elInput.addEventListener("focus", (e) => {
+      elInput.innerText = "Choose Key";
+      keys = ["", "", "", ""];
+    });
+
+    elInput.addEventListener("focusout", (e) => {
+      this.setCurrentHotkeyToInput();
+    });
+
+    elInput.addEventListener("keydown", (e) => {
+      console.log("keydown", e.key, e.metaKey, e.shiftKey, e.altKey, e.ctrlKey);
+      e.preventDefault();
+      if (e.key === "Shift") {
+        keys[2] = "Shift+";
+      } else if (e.key === "Alt") {
+        keys[0] = "Alt+";
+      } else if (e.key === "Control") {
+        keys[1] = "Ctrl+";
+      } else {
+        keys[3] = e.key;
+        const newHotkey = {
+          name: hotkeys.toggle,
+          gameId: 765,
+          virtualKey: e.keyCode,
+          modifiers: {
+            ctrl: e.ctrlKey,
+            shift: e.shiftKey,
+            alt: e.altKey,
+          },
+        };
+        elClose.focus();
+        overwolf.settings.hotkeys.assign(newHotkey, (e) => {
+          console.log("assign: ", newHotkey, e);
+          this.setCurrentHotkeyToInput();
+        });
+      }
+      elInput.innerText = keys.join("");
+    });
+
+    elInput.addEventListener("keyup", (e) => {
+      e.preventDefault();
+      console.log("keyup", e.key, e.metaKey, e.shiftKey, e.altKey, e.ctrlKey);
+      if (e.key === "Shift") {
+        keys[2] = "";
+      } else if (e.key === "Alt") {
+        keys[0] = "";
+      } else if (e.key === "Control") {
+        keys[1] = "";
+      }
+      const strHotkey = keys.join("");
+      elInput.innerText = strHotkey === "" ? "Choose Key" : strHotkey;
+    });
+
+    elClose.addEventListener("click", (e) => {
+      const hotkey = {
+        name: hotkeys.toggle,
+        gameId: 765,
+      };
+      overwolf.settings.hotkeys.unassign(hotkey, (e) => {
+        this.setCurrentHotkeyToInput();
+      });
+    });
+  }
+  private async getUserCharacterInfo() {
+    const overlay = document.getElementById("loading-overlay");
+    overlay.classList.add("active");
+
+    const response = await getCharacters();
+
+    this.region = response.region;
+    this.characters = response.characters;
+    console.log(this.characters);
+    localStorage.setItem("region", this.region);
+    this.onLoggedIn();
+
+    overlay.classList.remove("active");
+  }
 
   private async callbackOAuth(urlscheme) {
-    // const overlay = document.getElementById("loading-overlay");
-    // overlay.classList.add("active");
+    const overlay = document.getElementById("loading-overlay");
+    overlay.classList.add("active");
 
     const url = new URL(decodeURIComponent(urlscheme.parameter));
     const code = url.searchParams.get("code");
@@ -179,7 +311,7 @@ class InGame extends AppWindow {
       console.log(e);
     }
 
-    // overlay.classList.remove("active");
+    overlay.classList.remove("active");
   }
 
   public clearJournalUI() {
