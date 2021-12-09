@@ -1,9 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap");
 
 @font-face {
-  font-family: 'Friz Quadrata TT';
-  src: url('/font/FrizQuadrataTT.woff2') format('woff2'),
-      url('/font/FrizQuadrataTT.woff') format('woff');
+  font-family: "Friz Quadrata TT";
+  src: url("/font/FrizQuadrataTT.woff2") format("woff2"), url("/font/FrizQuadrataTT.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -22,4 +21,13 @@ button {
 
 button:focus {
   outline: none;
+}
+.d-none {
+  display: none;
+}
+.d-inline-block {
+  display: inline-block;
+}
+.d-block {
+  display: block;
 }
