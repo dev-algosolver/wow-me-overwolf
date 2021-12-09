@@ -220,11 +220,6 @@ button {
   background: url(../img/in-game-window/button/black.png) no-repeat center;
 }
 
-button:hover {
-  color: #ebd34d;
-  background: url(../img/in-game-window/button/red.png) no-repeat center;
-}
-
 button#closeButton,
 button#minimizeButton,
 button#maximizeButton {
@@ -975,6 +970,10 @@ div.personal-journal {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
+#addContentModal.modal,
+#editContentModal.modal {
+  padding-top: 70px;
+}
 
 /* Modal Content */
 .modal .modal-content {
@@ -991,11 +990,11 @@ div.personal-journal {
 .modal .modal-content-add {
   margin-left: 234px;
   padding: 15px 24px;
-  width: 450px;
-  height: 33px;
+  width: 445px;
+  height: 370px;
   background-image: url("../img/desktop-window/content-modal.png");
   background-position: center center;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .modal .submitButton,
@@ -1040,7 +1039,7 @@ div.personal-journal {
   font-size: 14px;
   line-height: 13px;
   color: #433022;
-  margin: 10px 0;
+  margin: 7px 0;
 }
 .modal .modalTitle2 {
   font-family: Friz Quadrata;
@@ -1155,7 +1154,7 @@ div.personal-journal {
   border: 2.14427px solid #462303;
   box-sizing: border-box;
   border-radius: 4px;
-  height: 40px;
+  height: 30px;
   width: 100%;
   transition: 0.3s;
   box-shadow: inset 0 0 0 none;
@@ -1184,12 +1183,13 @@ div.personal-journal {
   display: flex;
   justify-content: center;
   background: #653d19;
-  padding: 0.5rem 0;
+  /* padding: 0.5rem 0; */
   border: 1px solid rgba(139, 138, 138, 0.233);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   flex-wrap: wrap;
   transition: all 0.8s;
+  height: 30px;
 }
 .journal-content .richEditor .toolbar button {
   background: none;
@@ -1206,13 +1206,13 @@ div.personal-journal {
 }
 
 .journal-content .richEditor .editor {
-  min-height: 200px;
-  max-height: 200px;
+  min-height: 135px;
+  max-height: 135px;
   max-width: 100%;
   outline: none;
   border: none;
   border: 1px solid rgba(128, 128, 128, 0.233);
-  padding: 1rem;
+  padding: 10px;
   text-align: left;
   line-height: 1.4;
   overflow: auto;
@@ -1238,7 +1238,7 @@ div.personal-journal {
   margin-left: 1rem;
 }
 .journal-content #editContentModal .richEditor {
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   background: rgba(0, 0, 0, 0.2);
   border: 2.14427px solid #462303;
   box-sizing: border-box;
@@ -1249,12 +1249,13 @@ div.personal-journal {
   display: flex;
   justify-content: center;
   background: #653d19;
-  padding: 0.5rem 0;
+  /* padding: 0.5rem 0; */
   border: 1px solid rgba(139, 138, 138, 0.233);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   flex-wrap: wrap;
   transition: all 0.8s;
+  height: 30px;
 }
 .journal-content #editContentModal .richEditor .toolbar button {
   background: none;
@@ -1271,13 +1272,13 @@ div.personal-journal {
 }
 
 .journal-content #editContentModal .richEditor .editEditor {
-  min-height: 200px;
-  max-height: 200px;
+  min-height: 135px;
+  max-height: 35px;
   max-width: 100%;
   outline: none;
   border: none;
   border: 1px solid rgba(128, 128, 128, 0.233);
-  padding: 1rem;
+  padding: 10px;
   text-align: left;
   line-height: 1.4;
   overflow: auto;
@@ -1301,16 +1302,22 @@ div.personal-journal {
   overflow-y: scroll;
 }
 
-.journal-content #journal-item-container::-webkit-scrollbar {
+.journal-content #journal-item-container::-webkit-scrollbar,
+.editEditor::-webkit-scrollbar,
+.editor::-webkit-scrollbar {
   width: 5px;
 }
 
-.journal-content #journal-item-container::-webkit-scrollbar-track {
+.journal-content #journal-item-container::-webkit-scrollbar-track,
+.editEditor::-webkit-scrollbar-track,
+.editor::-webkit-scrollbar-track {
   background: #301f10;
   border-radius: 20px;
 }
 
-.journal-content #journal-item-container::-webkit-scrollbar-thumb {
+.journal-content #journal-item-container::-webkit-scrollbar-thumb,
+.editEditor::-webkit-scrollbar-thumb,
+.editor::-webkit-scrollbar-thumb {
   background: #f8ae62;
 }
 
@@ -1571,6 +1578,20 @@ div.sub-panel h3 {
 div.sub-panel li {
   /* font-family: Radiance; */
   font-size: 16px;
+}
+.toolbar button {
+  min-width: 30px;
+}
+
+.submitButton,
+.submitButton2,
+.cancelButton,
+.cancelButton2 {
+  margin-top: 15px !important;
+  margin-bottom: 0px !important;
+  height: 22px;
+  padding: 0 !important;
+  cursor: pointer;
 }
 
 @keyframes messageAnim {
