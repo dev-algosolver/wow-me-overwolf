@@ -7,11 +7,11 @@ div.range-slider.opacity-slider {
 	width: 100px;
 	position: fixed;
 	top: 8px;
-	right: 75px;
+	right: 120px;
 	z-index: 10000;
 	height: 20px;
 }
-div.range-slider input[type=range] {
+div.range-slider input[type="range"] {
 	pointer-events: none;
 	position: absolute;
 	-webkit-appearance: none;
@@ -28,7 +28,7 @@ div.range-slider input[type=range] {
 	margin: 0;
 	padding: 0 5px;
 }
-div.range-slider input[type=range]::-webkit-slider-thumb {
+div.range-slider input[type="range"]::-webkit-slider-thumb {
 	pointer-events: all;
 	position: relative;
 	z-index: 1;

@@ -60,7 +60,7 @@
         "override_on_update": true,
         "size": {
           "width": 805,
-          "height": 780
+          "height": 790
         },
         "min_size": {
           "width": 805,
@@ -68,7 +68,7 @@
         },
         "max_size": {
           "width": 805,
-          "height": 780
+          "height": 790
         },
         "block_top_window_navigation": true,
         "popup_blocker": true,

@@ -29,13 +29,7 @@
         >
           Talent Picker
         </button>
-        <button
-          id="btn-condult-picker"
-          class="work-in-progress"
-          message="Were still working on this feature, coming soon!"
-        >
-          Condult Picker
-        </button>
+
         <button id="btn-personal-journal" page-type="">Personal Journal</button>
         <button
           class="menu-item"
@@ -61,7 +55,11 @@
         ></a>
       </h1>
       <div class="window-controls-group">
-        <button class="icon window-control" id="minimizeButton">
+        <button
+          class="icon window-control"
+          id="minimizeButton"
+          style="margin-right: -70px"
+        >
           <img src="/img/in-game-window/button/minimize.png" alt="Minimize" />
         </button>
         <!-- <button class="icon window-control" id="maximizeButton">
@@ -70,6 +68,7 @@
         <button
           class="icon window-control window-control-close"
           id="closeButton"
+          style="margin-right: -10px"
         >
           <img src="/img/in-game-window/button/close.png" alt="Close" />
         </button>
@@ -183,7 +182,7 @@
               </div>
             </div>
             <div class="personal-journal-content disabled">
-              <h1>Personal Journal</h1>
+              <!-- <h1>Personal Journal</h1> -->
               <div class="personal-journal-container">
                 <div class="personal-journal">
                   <!-- JOurneal add -->
@@ -341,7 +340,7 @@
                               Save
                             </button>
                             <button type="submit" class="cancelButton">
-                              Cancel
+                              Clear
                             </button>
                           </div>
                         </div>
@@ -435,11 +434,10 @@
                                   />
                                 </button>
                               </div>
-                              <div
-                                class="editEditor"
-                                contenteditable="true"
-                                data-gramm_editor="false"
-                              ></div>
+                              <div>
+                                class="editEditor" contenteditable="true"
+                                data-gramm_editor="false" >
+                              </div>
                             </div>
                           </div>
                           <div class="">
@@ -495,8 +493,8 @@
                 </button>
                 <button
                   id="btn_feedback"
-                  class="work-in-progress"
-                  message="You'd click here to send us feedback and help us improve"
+                  href="mailto:info@wow.gg"
+                  onclick="window.location='mailto:info@wow.gg'"
                 >
                   Feedback
                 </button>
