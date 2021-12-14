@@ -911,21 +911,24 @@ div.personal-journal {
 }
 
 #addContentButton {
-  position: fixed;
-  top: 552px;
-  width: 365px;
   font-family: "Friz Quadrata TT", Arial, Helvetica, sans-serif;
   letter-spacing: 0.5px;
   color: #f8ae62;
   padding: 2px 0;
   margin-bottom: 5px;
-  background: url("../img/desktop-window/content-tab.png");
+  background: url("../img/desktop-window/tab-bg-active.png");
   border: 2.14427px solid #462303;
   box-sizing: border-box;
   border-radius: 4px;
   background-position: center;
   background-size: cover;
   height: 30px;
+  opacity: 0.6;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#addContentButton.active {
+  opacity: 1;
 }
 
 .tab-action-button {
@@ -1013,12 +1016,13 @@ div.personal-journal {
   font-family: "Friz Quadrata TT", Arial, Helvetica, sans-serif;
   letter-spacing: 0.5px;
   color: #f8ae62;
-  background: #976232;
+  /* background: #976232; */
   padding: 5px 8px;
   border-radius: 4px;
   margin-bottom: 5px;
   border: 2.5px solid #462303;
   margin-top: 20px;
+  background-image: url("../img/desktop-window/save.png");
 }
 
 /* The Close Button */
@@ -1118,7 +1122,7 @@ div.personal-journal {
   flex-direction: column;
   position: absolute;
   left: 200px;
-  height: 455px;
+  height: 515px;
 }
 
 .journal-content .journalModalHeader {
@@ -1307,7 +1311,7 @@ div.personal-journal {
 }
 
 .journal-content #journal-item-container {
-  height: 455px;
+  height: 480px;
   padding: 0px 10px;
   overflow-x: hidden;
   overflow-y: scroll;

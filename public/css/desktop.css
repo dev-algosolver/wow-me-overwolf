@@ -697,6 +697,10 @@ div.personal-journal {
   background-position: center;
   background-size: cover;
   height: 30px;
+  opacity: 0.7;
+}
+#addContentButton.active {
+  opacity: 1;
 }
 
 .tab-action-button {
@@ -778,12 +782,15 @@ div.personal-journal {
   font-family: "Friz Quadrata TT", Arial, Helvetica, sans-serif;
   letter-spacing: 0.5px;
   color: #f8ae62;
-  background: #976232;
+  /* background: #976232; */
   padding: 5px 8px;
   border-radius: 4px;
   margin-bottom: 5px;
   border: 2.5px solid #462303;
   margin-top: 20px;
+  background-image: url("../img/desktop-window/save.png");
+  background-position: center;
+  background-size: cover;
 }
 
 /* The Close Button */

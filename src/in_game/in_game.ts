@@ -410,6 +410,11 @@ class InGame extends AppWindow {
         const selectedJournal = response.data[i];
         console.log("response data", response.data);
         console.log(i, selectedJournal);
+
+        // Making add new contant button active
+        const addContentButton = document.getElementById("addContentButton");
+        addContentButton.classList.add("active");
+
         const journalContainer = document.getElementById(
           "journal-item-container"
         );
