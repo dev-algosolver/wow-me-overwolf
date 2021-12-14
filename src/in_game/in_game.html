@@ -434,10 +434,11 @@
                                   />
                                 </button>
                               </div>
-                              <div>
-                                class="editEditor" contenteditable="true"
-                                data-gramm_editor="false" >
-                              </div>
+                              <div
+                                class="editEditor"
+                                contenteditable="true"
+                                data-gramm_editor="false"
+                              ></div>
                             </div>
                           </div>
                           <div class="">
@@ -529,7 +530,6 @@
     <script>
       function toggleActiveTab() {
         var element = document.getElementsByClassName("tab-link");
-        console.log(element.length);
         element.classList.toggle("active-tab");
       }
     </script>
@@ -695,7 +695,9 @@
       var span2 = document.getElementsByClassName("ContentModalClose")[0];
 
       btn2.onclick = function () {
-        modal2.style.display = "block";
+        if (btn2.classList.contains("active")) {
+          modal2.style.display = "block";
+        }
       };
 
       span2.onclick = function () {
